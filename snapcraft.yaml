@@ -104,6 +104,12 @@ apps:
     plugs: [tpm]
 
 parts:
+  common:
+    plugin: dump
+    source: .
+    snap:
+      - copyright.tpm2-tss
+      - copyright.tpm2-tools
   tpm2-tss:
     plugin: autotools
     source: https://git.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/tpm2

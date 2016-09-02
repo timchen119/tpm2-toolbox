@@ -11,7 +11,7 @@ apps:
   resourcemgr:
     command: sbin/resourcemgr
     daemon: simple
-    plugs: [tpm]
+    plugs: [tpm, network-bind]
   activatecredential:
     command: sbin/tpm2_activatecredential
     plugs: [tpm]

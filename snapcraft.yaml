@@ -100,12 +100,29 @@ apps:
     plugs: [tpm]
 
 parts:
+  tpm2-tss:
+    plugin: autotools
+    source: https://git.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/tpm2
+    source-type: git
+    source-branch: tpm2-tss/0.98+20160226.d4f23cc
+    build-packages:
+      - autoconf
+      - autoconf-archive
+      - libtool
+      - gcc
+      - g++
+      - libc6-dev
   tpm2-tools:
     plugin: autotools
     source: https://git.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/tpm2
     source-type: git
     source-branch: tpm2-tools/1.0.0+20160226.64b3334
     build-packages:
+      - autoconf
+      - autoconf-archive
+      - pkg-config
+      - libcurl4-openssl-dev
       - libssl-dev
       - libtool
-      - libtss2-dev
+    after:
+      - tpm2-tss

@@ -1,0 +1,111 @@
+name: tpm2
+version: 1.0-1
+summary: TPM 2.0 utilities
+description: |
+  Set of utilities and a daemon to deal with TPM 2.0 chips built
+  into a wide range of todays devices. Please find the source
+  code at: https://code.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/tpm2
+confinement: strict
+
+apps:
+  activatecredential:
+    command: sbin/tpm2_activatecredential
+    plugs: [tpm]
+  akparse:
+    command: sbin/tpm2_akparse
+    plugs: [tpm]
+  certify:
+    command: sbin/tpm2_certify
+    plugs: [tpm]
+  create:
+    command: sbin/tpm2_create
+    plugs: [tpm]
+  createprimary:
+    command: sbin/tpm2_createprimary
+    plugs: [tpm]
+  encryptdecrypt:
+    command: sbin/tpm2_encryptdecrypt
+    plugs: [tpm]
+  evictcontrol:
+    command: sbin/tpm2_evictcontrol
+    plugs: [tpm]
+  getmanufec:
+    command: sbin/tpm2_getmanufec
+    plugs: [tpm]
+  getpubak:
+    command: sbin/tpm2_getpubak
+    plugs: [tpm]
+  getpubek:
+    command: sbin/tpm2_getpubek
+    plugs: [tpm]
+  getrandom:
+    command: sbin/tpm2_getrandom
+    plugs: [tpm]
+  hash:
+    command: sbin/tpm2_hash
+    plugs: [tpm]
+  hmac:
+    command: sbin/tpm2_hmac
+    plugs: [tpm]
+  listpcrs:
+    command: sbin/tpm2_listpcrs
+    plugs: [tpm]
+  load:
+    command: sbin/tpm2_load
+    plugs: [tpm]
+  loadexternal:
+    command: sbin/tpm2_loadexternal
+    plugs: [tpm]
+  makecredential:
+    command: sbin/tpm2_makecredential
+    plugs: [tpm]
+  nvdefine:
+    command: sbin/tpm2_nvdefine
+    plugs: [tpm]
+  nvlist:
+    command: sbin/tpm2_nvlist
+    plugs: [tpm]
+  nvread:
+    command: sbin/tpm2_nvread
+    plugs: [tpm]
+  nvrelease:
+    command: sbin/tpm2_nvrelease
+    plugs: [tpm]
+  nvwrite:
+    command: sbin/tpm2_nvwrite
+    plugs: [tpm]
+  quote:
+    command: sbin/tpm2_quote
+    plugs: [tpm]
+  readpublic:
+    command: sbin/tpm2_readpublic
+    plugs: [tpm]
+  rsadecrypt:
+    command: sbin/tpm2_rsadecrypt
+    plugs: [tpm]
+  rsaencrypt:
+    command: sbin/tpm2_rsaencrypt
+    plugs: [tpm]
+  sign:
+    command: sbin/tpm2_sign
+    plugs: [tpm]
+  takeownership:
+    command: sbin/tpm2_takeownership
+    plugs: [tpm]
+  unseal:
+    command: sbin/tpm2_unseal
+    plugs: [tpm]
+  verifysignature:
+    command: sbin/tpm2_verifysignature
+    plugs: [tpm]
+
+parts:
+  tpm2-tools:
+    plugin: autotools
+    source: https://git.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/tpm2
+    source-type: git
+    source-branch: tpm2-tools/1.0.0+20160226.64b3334
+    build-packages:
+      - libssl-dev
+      - libtool
+      - libtss2-dev

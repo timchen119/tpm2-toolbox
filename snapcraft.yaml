@@ -126,6 +126,12 @@ parts:
       - -include
   tpm2-tools:
     plugin: autotools
+    #
+    # By default the snapcraft autotools plugin doesn't
+    # specify the -O2 CFLAG when compiling C/C++.  This
+    # causes an undefined symbol when building tpm2_nvlist.
+    configflags:
+      - "CFLAGS=-O2"
     source: https://git.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/tpm2
     source-type: git
     source-branch: tpm2-tools/v1.1-beta_1

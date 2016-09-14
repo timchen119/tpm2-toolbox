@@ -114,7 +114,7 @@ parts:
     plugin: autotools
     source: https://git.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/tpm2
     source-type: git
-    source-branch: tpm2-tss/0.98+20160226.d4f23cc
+    source-branch: tpm2-tss/1.0-beta_1
     build-packages:
       - autoconf
       - autoconf-archive
@@ -128,11 +128,12 @@ parts:
     plugin: autotools
     source: https://git.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/tpm2
     source-type: git
-    source-branch: tpm2-tools/1.0.0+20160226.64b3334
+    source-branch: tpm2-tools/v1.1-beta_1
     build-packages:
       - autoconf
       - autoconf-archive
       - pkg-config
+      - libcmocka-dev
       - libcurl4-openssl-dev
       - libssl-dev
       - libtool

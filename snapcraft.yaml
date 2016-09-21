@@ -14,94 +14,93 @@ apps:
     plugs: [tpm, network-bind]
   activatecredential:
     command: sbin/tpm2_activatecredential
-    plugs: [tpm]
+    plugs: [network]
   akparse:
     command: sbin/tpm2_akparse
-    plugs: [tpm]
   certify:
     command: sbin/tpm2_certify
-    plugs: [tpm]
+    plugs: [network]
   create:
     command: sbin/tpm2_create
-    plugs: [tpm]
+    plugs: [network]
   createprimary:
     command: sbin/tpm2_createprimary
-    plugs: [tpm]
+    plugs: [network]
   encryptdecrypt:
     command: sbin/tpm2_encryptdecrypt
-    plugs: [tpm]
+    plugs: [network]
   evictcontrol:
     command: sbin/tpm2_evictcontrol
-    plugs: [tpm]
+    plugs: [network]
   getmanufec:
     command: sbin/tpm2_getmanufec
-    plugs: [tpm]
+    plugs: [network]
   getpubak:
     command: sbin/tpm2_getpubak
-    plugs: [tpm]
+    plugs: [network]
   getpubek:
     command: sbin/tpm2_getpubek
-    plugs: [tpm]
+    plugs: [network]
   getrandom:
     command: sbin/tpm2_getrandom
-    plugs: [tpm]
+    plugs: [network]
   hash:
     command: sbin/tpm2_hash
-    plugs: [tpm]
+    plugs: [network]
   hmac:
     command: sbin/tpm2_hmac
-    plugs: [tpm]
+    plugs: [network]
   listpcrs:
     command: sbin/tpm2_listpcrs
-    plugs: [tpm]
+    plugs: [network]
   load:
     command: sbin/tpm2_load
-    plugs: [tpm]
+    plugs: [network]
   loadexternal:
     command: sbin/tpm2_loadexternal
-    plugs: [tpm]
+    plugs: [network]
   makecredential:
     command: sbin/tpm2_makecredential
-    plugs: [tpm]
+    plugs: [network]
   nvdefine:
     command: sbin/tpm2_nvdefine
-    plugs: [tpm]
+    plugs: [network]
   nvlist:
     command: sbin/tpm2_nvlist
-    plugs: [tpm]
+    plugs: [network]
   nvread:
     command: sbin/tpm2_nvread
-    plugs: [tpm]
+    plugs: [network]
   nvrelease:
     command: sbin/tpm2_nvrelease
-    plugs: [tpm]
+    plugs: [network]
   nvwrite:
     command: sbin/tpm2_nvwrite
-    plugs: [tpm]
+    plugs: [network]
   quote:
     command: sbin/tpm2_quote
-    plugs: [tpm]
+    plugs: [network]
   readpublic:
     command: sbin/tpm2_readpublic
-    plugs: [tpm]
+    plugs: [network]
   rsadecrypt:
     command: sbin/tpm2_rsadecrypt
-    plugs: [tpm]
+    plugs: [network]
   rsaencrypt:
     command: sbin/tpm2_rsaencrypt
-    plugs: [tpm]
+    plugs: [network]
   sign:
     command: sbin/tpm2_sign
-    plugs: [tpm]
+    plugs: [network]
   takeownership:
     command: sbin/tpm2_takeownership
-    plugs: [tpm]
+    plugs: [network]
   unseal:
     command: sbin/tpm2_unseal
-    plugs: [tpm]
+    plugs: [network]
   verifysignature:
     command: sbin/tpm2_verifysignature
-    plugs: [tpm]
+    plugs: [network]
 
 parts:
   common:

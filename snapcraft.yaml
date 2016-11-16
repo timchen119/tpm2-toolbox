@@ -82,7 +82,6 @@ apps:
     plugs: [network]
   rc-decode:
     command: sbin/tpm2_rc_decode
-    plugs: [network]
   readpublic:
     command: sbin/tpm2_readpublic
     plugs: [network]

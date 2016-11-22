@@ -113,7 +113,7 @@ parts:
     plugin: autotools
     source: https://git.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/tpm2
     source-type: git
-    source-branch: tpm2-tss/1.0-beta_1
+    source-branch: tpm2-tss/1.0
     build-packages:
       - autoconf
       - autoconf-archive
@@ -133,7 +133,7 @@ parts:
       - "CFLAGS=-O2"
     source: https://git.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/tpm2
     source-type: git
-    source-branch: tpm2-tools/v1.1-beta_1
+    source-branch: tpm2-tools/v1.1.0
     build-packages:
       - autoconf
       - autoconf-archive

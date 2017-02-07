@@ -15,94 +15,125 @@ apps:
   activatecredential:
     command: sbin/tpm2_activatecredential
     plugs: [network]
+    aliases: [tpm2_activatecredential]
   akparse:
     command: sbin/tpm2_akparse
+    aliases: [tpm2_akparse]
   certify:
     command: sbin/tpm2_certify
     plugs: [network]
+    aliases: [tpm2_certify]
   create:
     command: sbin/tpm2_create
     plugs: [network]
+    aliases: [tpm2_create]
   createprimary:
     command: sbin/tpm2_createprimary
     plugs: [network]
+    aliases: [tpm2_createprimary]
   encryptdecrypt:
     command: sbin/tpm2_encryptdecrypt
     plugs: [network]
+    aliases: [tpm2_encryptdecrypt]
   evictcontrol:
     command: sbin/tpm2_evictcontrol
     plugs: [network]
+    aliases: [tpm2_evictcontrol]
   getmanufec:
     command: sbin/tpm2_getmanufec
     plugs: [network]
+    aliases: [tpm2_getmanufec]
   getpubak:
     command: sbin/tpm2_getpubak
     plugs: [network]
+    aliases: [tpm2_getpubak]
   getpubek:
     command: sbin/tpm2_getpubek
     plugs: [network]
+    aliases: [tpm2_getpubek]
   getrandom:
     command: sbin/tpm2_getrandom
     plugs: [network]
+    aliases: [tpm2_getrandom]
   hash:
     command: sbin/tpm2_hash
     plugs: [network]
+    aliases: [tpm2_hash]
   hmac:
     command: sbin/tpm2_hmac
     plugs: [network]
+    aliases: [tpm2_hmac]
   listpcrs:
     command: sbin/tpm2_listpcrs
     plugs: [network]
+    aliases: [tpm2_listpcrs]
   load:
     command: sbin/tpm2_load
     plugs: [network]
+    aliases: [tpm2_load]
   loadexternal:
     command: sbin/tpm2_loadexternal
     plugs: [network]
+    aliases: [tpm2_loadexternal]
   makecredential:
     command: sbin/tpm2_makecredential
     plugs: [network]
+    aliases: [tpm2_makecredential]
   nvdefine:
     command: sbin/tpm2_nvdefine
     plugs: [network]
+    aliases: [tpm2_nvdefine]
   nvlist:
     command: sbin/tpm2_nvlist
     plugs: [network]
+    aliases: [tpm2_nvlist]
   nvread:
     command: sbin/tpm2_nvread
     plugs: [network]
+    aliases: [tpm2_nvread]
   nvrelease:
     command: sbin/tpm2_nvrelease
     plugs: [network]
+    aliases: [tpm2_nvrelease]
   nvwrite:
     command: sbin/tpm2_nvwrite
     plugs: [network]
+    aliases: [tpm2_nvwrite]
   quote:
     command: sbin/tpm2_quote
     plugs: [network]
+    aliases: [tpm2_quote]
   rc-decode:
     command: sbin/tpm2_rc_decode
+    aliases: [tpm2_rc_decode]
   readpublic:
     command: sbin/tpm2_readpublic
     plugs: [network]
+    aliases: [tpm2_readpublic]
   rsadecrypt:
     command: sbin/tpm2_rsadecrypt
     plugs: [network]
+    aliases: [tpm2_rsadecrypt]
   rsaencrypt:
     command: sbin/tpm2_rsaencrypt
     plugs: [network]
+    aliases: [tpm2_rsaencrypt]
   sign:
     command: sbin/tpm2_sign
     plugs: [network]
+    aliases: [tpm2_sign]
   takeownership:
     command: sbin/tpm2_takeownership
     plugs: [network]
+    aliases: [tpm2_takeownership]
   unseal:
     command: sbin/tpm2_unseal
     plugs: [network]
+    aliases: [tpm2_unseal]
   verifysignature:
     command: sbin/tpm2_verifysignature
     plugs: [network]
+    aliases: [tpm2_verifysignature]
 
 parts:
   common:

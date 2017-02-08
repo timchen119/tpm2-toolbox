@@ -5,3 +5,36 @@ execute: |
     snap interfaces | grep -Pzq ":tpm +tpm2"
     snap interfaces | grep -Pzq ":network +tpm2"
     snap interfaces | grep -Pzq ":network-bind +tpm2"
+
+    # Verify aliases are set up
+    test -x /snap/bin/tpm2_activatecredential
+    test -x /snap/bin/tpm2_akparse
+    test -x /snap/bin/tpm2_certify
+    test -x /snap/bin/tpm2_create
+    test -x /snap/bin/tpm2_createprimary
+    test -x /snap/bin/tpm2_encryptdecrypt
+    test -x /snap/bin/tpm2_evictcontrol
+    test -x /snap/bin/tpm2_getmanufec
+    test -x /snap/bin/tpm2_getpubak
+    test -x /snap/bin/tpm2_getpubek
+    test -x /snap/bin/tpm2_getrandom
+    test -x /snap/bin/tpm2_hash
+    test -x /snap/bin/tpm2_hmac
+    test -x /snap/bin/tpm2_listpcrs
+    test -x /snap/bin/tpm2_load
+    test -x /snap/bin/tpm2_loadexternal
+    test -x /snap/bin/tpm2_makecredential
+    test -x /snap/bin/tpm2_nvdefine
+    test -x /snap/bin/tpm2_nvlist
+    test -x /snap/bin/tpm2_nvread
+    test -x /snap/bin/tpm2_nvrelease
+    test -x /snap/bin/tpm2_nvwrite
+    test -x /snap/bin/tpm2_quote
+    test -x /snap/bin/tpm2_rc_decode
+    test -x /snap/bin/tpm2_readpublic
+    test -x /snap/bin/tpm2_rsadecrypt
+    test -x /snap/bin/tpm2_rsaencrypt
+    test -x /snap/bin/tpm2_sign
+    test -x /snap/bin/tpm2_takeownership
+    test -x /snap/bin/tpm2_unseal
+    test -x /snap/bin/tpm2_verifysignature

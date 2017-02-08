@@ -6,6 +6,7 @@ description: |
   into a wide range of todays devices. Please find the source
   code at: https://code.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/tpm2
 confinement: strict
+grade: stable
 
 apps:
   resourcemgr:
@@ -139,7 +140,7 @@ parts:
   common:
     plugin: dump
     source: .
-    snap:
+    prime:
       - copyright.tpm2-tss
       - copyright.tpm2-tools
   tpm2-tss:
@@ -154,7 +155,7 @@ parts:
       - gcc
       - g++
       - libc6-dev
-    snap:
+    prime:
       - -include
   tpm2-tools:
     plugin: autotools
@@ -175,7 +176,7 @@ parts:
       - libcurl4-openssl-dev
       - libssl-dev
       - libtool
-    snap:
+    prime:
       - -include
     after:
       - tpm2-tss

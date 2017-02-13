@@ -6,14 +6,14 @@ if [ -n "$SNAP_CHANNEL" ] ; then
 	exit 0
 fi
 
-# Setup classic snap and build the tpm2 snap in there
+# Set up classic snap and build the tpm2 snap in there
 snap install --devmode --beta classic
 cat <<-EOF > /home/test/build-snap.sh
 #!/bin/sh
 set -ex
 apt update
 apt install -y --force-yes snapcraft
-cd /home/tpm2
+cd ${PROJECT_PATH}
 snapcraft clean
 snapcraft
 EOF
@@ -22,4 +22,4 @@ sudo classic /home/test/build-snap.sh
 snap remove classic
 
 # Make sure we have a snap build
-test -e /home/tpm2/tpm2_*_amd64.snap
+test -e ${PROJECT_PATH}/${SNAP_NAME}_*_${SNAP_ARCH}.snap

@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 #
-# Copyright (C) 2016 Canonical Ltd
+# Copyright (C) 2017 Canonical Ltd
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 3 as
@@ -16,69 +16,64 @@
 
 set -e
 
-image_name=ubuntu-core-16.img
-channel=candidate
-spread_opts=
-force_new_image=0
-test_from_channel=0
+TESTS_EXTRAS_URL="https://git.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/tests-extras"
+TESTS_EXTRAS_PATH=".tests-extras"
 
+# Display help.
+# This has to be in sync with the tests-extras/test-runner.sh script
+# functionalities as the parameters to this one are passed directly there
+# this function will quit the script because of the 'exec' keyword
 show_help() {
-    echo "Usage: run-tests.sh [OPTIONS]"
-    echo
-    echo "optional arguments:"
-    echo "  --help                 Show this help message and exit"
-    echo "  --channel              Select another channel to build the base image from (default: $channel)"
-    echo "  --debug                Enable verbose debugging output"
-    echo "  --test-from-channel    Pull tpm2 snap from the specified channel instead of building it from source"
-    echo "  --force-new-image      Force generating a new image used for testing"
+    exec cat <<'EOF'
+Usage: run-tests.sh [OPTIONS]
+
+This is fetch & forget script and what it does is to fetch the
+tests-extras repository and execute the run-tests.sh script from
+there passing arguments as-is.
+
+optional arguments:
+  --help                 Show this help message and exit
+  --channel              Select another channel to build the base image from (default: stable)
+  --snap                 Extra snap to install
+  --debug                Enable verbose debugging output
+  --test-from-channel    Pull tpm2 snap from the specified channel instead of building it from source
+  --force-new-image      Force generating a new image used for testing
+EOF
 }
 
-while [ -n "$1" ]; do
-	case "$1" in
-		--help)
-			show_help
-			exit
-			;;
-		--channel=*)
-			channel=${1#*=}
-			shift
-			;;
-		--test-from-channel)
-			test_from_channel=1
-			shift
-			;;
-		--debug)
-			spread_opts="$spread_opts -vv -debug"
-			shift
-			;;
-		--force-new-image)
-			force_new_image=1
-			shift
-			;;
-		*)
-			echo "Unknown command: $1"
-			exit 1
-			;;
-	esac
-done
+# Clone the tests-extras repository
+clone_tests_extras() {
+	echo "INFO: Fetching tests-extras scripts into $TESTS_EXTRAS_PATH ..."
+	git clone -b master $TESTS_EXTRAS_URL $TESTS_EXTRAS_PATH >/dev/null 2>&1
+	if [ $? -ne 0 ]; then
+		echo "ERROR: Failed to fetch the $TESTS_EXTRAS_URL repo, exiting.."
+		exit 1
+	fi
+}
 
-SPREAD_QEMU_PATH="$HOME/.spread/qemu"
-if [ `which spread` = /snap/bin/spread ] ; then
-	current_version=`readlink /snap/spread/current`
-	SPREAD_QEMU_PATH="$HOME/snap/spread/$current_version/.spread/qemu/"
+# Make sure the already cloned tests-extras repository is in a known and updated
+# state before it is going to be used.
+restore_and_update_tests_extras() {
+	echo "INFO: Restoring and updating $TESTS_EXTRAS_PATH"
+	cd $TESTS_EXTRAS_PATH && git reset --hard && git clean -dfx && git pull
+	cd -
+}
+
+# ==============================================================================
+# This is fetch & forget script and what it does is to fetch the tests-extras
+# repo and execute the run-tests.sh script from there passing arguments as-is.
+#
+# The tests-extras repository ends up checked out in the snap tree but as a
+# hidden directory which is re-used since then.
+
+# Display help w/o fetching anything and exit
+[ "$1" = "--help" ] && show_help
+
+if [ -d "$TESTS_EXTRAS_PATH" ]; then
+	restore_and_update_tests_extras
+else
+	clone_tests_extras
 fi
 
-# Make sure we have a base image we use for testing
-if [ ! -e $SPREAD_QEMU_PATH/$image_name ] || [ $force_new_image -eq 1 ] ; then
-	echo "INFO: Creating new qemu test image ..."
-	(cd tests/image ; sudo ./create-image.sh $channel)
-	mkdir -p $SPREAD_QEMU_PATH
-	mv tests/image/ubuntu-core-16.img $SPREAD_QEMU_PATH/$image_name
-fi
-
-# We currently only run spread tests but we could do other things
-# here as well like running our snap-lintian tool etc.
-if [ $test_from_channel -eq 1 ] ; then
-	export SNAP_CHANNEL=$channel
-fi
-spread $spread_opts
+echo "INFO: Executing tests runner"
+cd $TESTS_EXTRAS_PATH && ./tests-runner.sh "$@"

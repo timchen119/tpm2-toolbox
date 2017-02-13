@@ -36,7 +36,7 @@ optional arguments:
   --channel              Select another channel to build the base image from (default: stable)
   --snap                 Extra snap to install
   --debug                Enable verbose debugging output
-  --test-from-channel    Pull network-manager snap from the specified channel instead of building it from source
+  --test-from-channel    Pull tpm2 snap from the specified channel instead of building it from source
   --force-new-image      Force generating a new image used for testing
 EOF
 }

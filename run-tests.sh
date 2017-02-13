@@ -51,7 +51,7 @@ clone_tests_extras() {
 	fi
 }
 
-# Make sure the already cloned tests-extras repository is in a known and update
+# Make sure the already cloned tests-extras repository is in a known and updated
 # state before it is going to be used.
 restore_and_update_tests_extras() {
 	echo "INFO: Restoring and updating $TESTS_EXTRAS_PATH"

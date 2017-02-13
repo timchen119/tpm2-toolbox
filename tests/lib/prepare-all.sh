@@ -6,7 +6,7 @@ if [ -n "$SNAP_CHANNEL" ] ; then
 	exit 0
 fi
 
-# Setup classic snap and build the tpm snap in there
+# Set up classic snap and build the tpm snap in there
 snap install --devmode --beta classic
 cat <<-EOF > /home/test/build-snap.sh
 #!/bin/sh

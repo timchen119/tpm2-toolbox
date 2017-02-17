@@ -1,5 +1,5 @@
 name: tpm2
-version: 1.0-3
+version: 1.0-4
 summary: TPM 2.0 utilities
 description: |
   Set of utilities and a daemon to deal with TPM 2.0 chips built

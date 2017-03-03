@@ -143,11 +143,14 @@ parts:
     prime:
       - copyright.tpm2-tss
       - copyright.tpm2-tools
+
   tpm2-tss:
     plugin: autotools
     source: https://git.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/tpm2
     source-type: git
     source-branch: tpm2-tss/1.0
+    configflags:
+      - --enable-unit
     build-packages:
       - autoconf
       - autoconf-archive
@@ -157,6 +160,10 @@ parts:
       - libc6-dev
     prime:
       - -include
+    install: |
+      # Run all tests shipped by default
+      make check
+
   tpm2-tools:
     plugin: autotools
     #
@@ -168,6 +175,8 @@ parts:
     source: https://git.launchpad.net/~snappy-hwe-team/snappy-hwe-snaps/+git/tpm2
     source-type: git
     source-branch: tpm2-tools/v1.1.0
+    configflags:
+      - --enable-unit
     build-packages:
       - autoconf
       - autoconf-archive
@@ -180,3 +189,6 @@ parts:
       - -include
     after:
       - tpm2-tss
+    install: |
+      # Run all tests shipped by default
+      make check

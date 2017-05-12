@@ -32,8 +32,13 @@ install_snap_under_test() {
 			snap connect ${SNAP_NAME}:${plug} core
 		done
 		# Setup all necessary aliases
+		snapd_version=$(snap version | awk '/^snapd / {print $2; exit}')
 		for alias in $SNAP_AUTO_ALIASES ; do
-			snap alias $SNAP_NAME $alias
+			target=$SNAP_NAME.$alias
+			if dpkg --compare-versions $snapd_version lt 2.25 ; then
+				target=$SNAP_NAME
+			fi
+			snap alias $target $alias
 		done
 	fi
 }

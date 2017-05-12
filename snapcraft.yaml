@@ -8,6 +8,9 @@ description: |
 confinement: strict
 grade: stable
 
+# NOTE: the alias syntax is depreciated with snapd 2.25 however it needs to
+# stay to guarantee that all clients are updated correctly.
+
 apps:
   resourcemgr:
     command: sbin/resourcemgr

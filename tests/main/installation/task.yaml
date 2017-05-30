@@ -5,6 +5,7 @@ execute: |
     snap interfaces | grep -Pzq ":tpm +tpm2"
     snap interfaces | grep -Pzq ":network +[a-z,-]*tpm2"
     snap interfaces | grep -Pzq ":network-bind +[a-z,-]*tpm2"
+    snap interfaces | grep -Pzq ":home +[a-z,-]*tpm2"
 
     # Verify aliases are set up
     test -x /snap/bin/tpm2_activatecredential

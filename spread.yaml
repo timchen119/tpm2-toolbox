@@ -23,7 +23,7 @@ environment:
     SNAP_ARCH: amd64
     # Allow the host to pass the channel to use for the test run
     SNAP_CHANNEL: $(HOST:echo $SNAP_CHANNEL)
-    SNAP_AUTOCONNECT_CORE_PLUGS: network network-bind tpm
+    SNAP_AUTOCONNECT_CORE_PLUGS: home network network-bind tpm
     SNAP_AUTO_ALIASES: tpm2_activatecredential tpm2_akparse tpm2_certify tpm2_create tpm2_createprimary tpm2_encryptdecrypt tpm2_evictcontrol tpm2_getmanufec tpm2_getpubak tpm2_getpubek tpm2_getrandom tpm2_hash tpm2_hmac tpm2_listpcrs tpm2_load tpm2_loadexternal tpm2_makecredential tpm2_nvdefine tpm2_nvlist tpm2_nvread tpm2_nvrelease tpm2_nvwrite tpm2_quote tpm2_rc_decode tpm2_readpublic tpm2_rsadecrypt tpm2_rsaencrypt tpm2_sign tpm2_takeownership tpm2_unseal tpm2_verifysignature
 
 backends:

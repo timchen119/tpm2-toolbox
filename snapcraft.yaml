@@ -20,9 +20,11 @@ slots:
 apps:
   tpm-server:
     command: sbin/tpm_server
+    daemon: simple
     plugs: [tpm, network-bind]
   tpm2-abrmd:
     command: sbin/tpm2-abrmd --allow-root --tcti=mssim
+    daemon: simple
     plugs: [tpm, network-bind]
     slots: [tpm2-abrmd-dbus]
   activatecredential:

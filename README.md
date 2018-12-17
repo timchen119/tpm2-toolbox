@@ -4,7 +4,7 @@ Set of utilities and a daemon to deal with TPM 2.0 chips built into a wide range
 
 The snap will invoke a TPM 2.0 software simulator daemon from IBM and tpm2-abrmd TPM2 access broker & resource management daemon by default.
 
-To access real TPM2 H/W, with kernel 4.11+ by default you can access it with the TPM2 in-kernel resource manager.
+To access real TPM2 H/W, with kernel 4.12 (or later) by default you can access it with the TPM2 in-kernel resource manager.
 
 ## Example usage
 

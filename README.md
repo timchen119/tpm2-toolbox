@@ -11,6 +11,7 @@ To access real TPM2 H/W, with kernel 4.11+ by default you can access it with the
 
 Without TPM2 H/W:
 
+```bash
 $tpm2-simulator.takeownership -V -c
 $tpm2-simulator.nvpcrlist -L sha256:0 -o pcr0.bin
 $tpm2-simulator.createpolicy -P -L sha256:0 -F pcr0.bin -f policy.digest
@@ -19,10 +20,11 @@ $tpm2-simulator.create -g 0x000B -G 0x0008 -u obj.pub -r obj.priv -c primary.con
 $tpm2-simulator.load -u obj.pub -r obj.priv -c primary.context -n load.name -C load.context
 
 $tpm2-simulator.unseal -c load.context -L 0xB:0 -F pcr0.bin
-
+```
 
 With TPM2 H/W and use in-kernel TPM2 resource manager after kernel 4.11+:
 
+```bash
 $sudo TPM2TOOLS_TCTI_NAME=device TPM2TOOLS_DEVICE_FILE=/dev/tpmrm0 tpm2-simulator.takeownership -V -c
 
 $sudo TPM2TOOLS_TCTI_NAME=device TPM2TOOLS_DEVICE_FILE=/dev/tpmrm0 tpm2-simulator.nvpcrlist -L sha256:0 -o pcr0.bin
@@ -32,5 +34,6 @@ $sudo TPM2TOOLS_TCTI_NAME=device TPM2TOOLS_DEVICE_FILE=/dev/tpmrm0 tpm2-simulato
 $sudo TPM2TOOLS_TCTI_NAME=device TPM2TOOLS_DEVICE_FILE=/dev/tpmrm0 tpm2-simulator.load -u obj.pub -r obj.priv -c primary.context -n load.name -C load.context
 
 $sudo TPM2TOOLS_TCTI_NAME=device TPM2TOOLS_DEVICE_FILE=/dev/tpmrm0 tpm2-simulator.unseal -c load.context -L 0xB:0 -F pcr0.bin
+```
 
 Export TPM2TOOLS_TCTI_NAME and TPM2TOOLS_DEVICE_FILE and use sudo -E will work too.

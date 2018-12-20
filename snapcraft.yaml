@@ -1,11 +1,10 @@
 name: tpm2-simulator
-version: 3.1.3-tpm2-tools-1332-ibmswtpm2
+version: 3.1.3+git-tpm2-tools-1332-ibmswtpm2
 summary: TPM 2.0 utilities
 
 description: |
   Set of utilities and a daemon to deal with TPM 2.0 chips built into a wide range of todays devices.
   The snap will invoke a TPM 2.0 software simulator daemon from IBM and tpm2-abrmd TPM2 access broker & resource management daemon by default.
-  To access real TPM2 H/W, with kernel 4.11+ by default you can access it with the TPM2 in-kernel resource manager.
 
 confinement: strict
 grade: stable
@@ -33,8 +32,23 @@ apps:
   certify:
     command: bin/tpm2_certify
     plugs: [tpm, network, home]
+  changeauth:
+    command: bin/tpm2_changeauth
+    plugs: [tpm, network, home]
+  clear:
+    command: bin/tpm2_clear
+    plugs: [tpm, network, home]
+  clearlock:
+    command: bin/tpm2_clearlock
+    plugs: [tpm, network, home]
   create:
     command: bin/tpm2_create
+    plugs: [tpm, network, home]
+  createak:
+    command: bin/tpm2_createak
+    plugs: [tpm, network, home]
+  createek:
+    command: bin/tpm2_createek
     plugs: [tpm, network, home]
   createpolicy:
     command: bin/tpm2_createpolicy
@@ -51,17 +65,14 @@ apps:
   evictcontrol:
     command: bin/tpm2_evictcontrol
     plugs: [tpm, network, home]
+  flushcontext:
+    command: bin/tpm2_flushcontext
+    plugs: [tpm, network, home]
   getcap:
     command: bin/tpm2_getcap
     plugs: [tpm, network, home]
   getmanufec:
     command: bin/tpm2_getmanufec
-    plugs: [tpm, network, home]
-  getpubak:
-    command: bin/tpm2_getpubak
-    plugs: [tpm, network, home]
-  getpubek:
-    command: bin/tpm2_getpubek
     plugs: [tpm, network, home]
   getrandom:
     command: bin/tpm2_getrandom
@@ -71,6 +82,9 @@ apps:
     plugs: [tpm, network, home]
   hmac:
     command: bin/tpm2_hmac
+    plugs: [tpm, network, home]
+  import:
+    command: bin/tpm2_import
     plugs: [tpm, network, home]
   listpersistent:
     command: bin/tpm2_listpersistent
@@ -102,14 +116,38 @@ apps:
   nvwrite:
     command: bin/tpm2_nvwrite
     plugs: [tpm, network, home]
-  nvpcrevent:
+  pcrevent:
     command: bin/tpm2_pcrevent
     plugs: [tpm, network, home]
-  nvpcrextend:
+  pcrextend:
     command: bin/tpm2_pcrextend
     plugs: [tpm, network, home]
-  nvpcrlist:
+  pcrlist:
     command: bin/tpm2_pcrlist
+    plugs: [tpm, network, home]
+  policyauthorize:
+    command: bin/tpm2_policyauthorize
+    plugs: [tpm, network, home]
+  policycommandcode:
+    command: bin/tpm2_policycommandcode
+    plugs: [tpm, network, home]
+  policyor:
+    command: bin/tpm2_policyor
+    plugs: [tpm, network, home]
+  policypassword:
+    command: bin/tpm2_policypassword
+    plugs: [tpm, network, home]
+  policypcr:
+    command: bin/tpm2_policypcr
+    plugs: [tpm, network, home]
+  policyrestart:
+    command: bin/tpm2_policyrestart
+    plugs: [tpm, network, home]
+  policysecret:
+    command: bin/tpm2_policysecret
+    plugs: [tpm, network, home]
+  print:
+    command: bin/tpm2_print
     plugs: [tpm, network, home]
   quote:
     command: bin/tpm2_quote
@@ -132,11 +170,11 @@ apps:
   sign:
     command: bin/tpm2_sign
     plugs: [tpm, network, home]
+  startauthsession:
+    command: bin/tpm2_startauthsession
+    plugs: [tpm, network, home]
   startup:
     command: bin/tpm2_startup
-    plugs: [tpm, network, home]
-  takeownership:
-    command: bin/tpm2_takeownership
     plugs: [tpm, network, home]
   unseal:
     command: bin/tpm2_unseal
@@ -493,18 +531,17 @@ parts:
       - copyright.tpm2-tools
 
   tpm2-tss:
-    plugin: autotools
+    plugin: make
     source: https://github.com/tpm2-software/tpm2-tss.git
     source-type: git
-    source-tag: 2.0.1
-    configflags:
-      - --enable-unit
+    #source-tag: 2.0.1
     build-packages:
       - autoconf
       - autoconf-archive
       - libtool
       - gcc-7
       - g++-7
+      - gnulib
       #- gcc #16.04
       #- g++ #16.04
       - libc6-dev
@@ -516,15 +553,17 @@ parts:
       - libssl1.1
       #- libssl1.0.0 #16.04
       - libgpg-error0
-    install: |
-      # Run all tests shipped by default
+    override-build: |
+      ./bootstrap -I /usr/share/gnulib/m4
+      ./configure --enable-unit --prefix=$SNAPCRAFT_PART_INSTALL/usr/
       make check -j8
+      make install
 
   tpm2-abrmd:
     plugin: autotools
     source: https://github.com/tpm2-software/tpm2-abrmd.git
     source-type: git
-    source-tag: 2.0.3
+    #source-tag: 2.0.3
     configflags:
       - --enable-unit
       - --with-dbuspolicydir=/etc/dbus-1/system.d
@@ -555,9 +594,9 @@ parts:
     #  - "CFLAGS=-O2"
     source: https://github.com/tpm2-software/tpm2-tools.git
     source-type: git
-    source-tag: 3.1.3
-    configflags:
-      - --enable-unit
+    #source-tag: 3.1.3
+    #configflags:
+    #  - --enable-unit
     build-packages:
       - pkg-config
       - libcmocka-dev

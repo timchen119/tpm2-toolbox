@@ -1,5 +1,5 @@
 name: tpm2-simulator
-version: 3.x.master.tpm2-tools.git-ibmswtpm2.rev1332
+version: tpm2.gitmaster+ibmswtpm2.1332
 summary: TPM 2.0 utilities
 
 description: |

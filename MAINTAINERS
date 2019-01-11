@@ -1,3 +1,9 @@
+tpm2-simulator snap maintainer:
+
+Tim Chen <tim.chen119@canonical.com>
+
+Original tpm2 snap maintainer:
+
 Simon Fels <simon.fels@canonical.com>
 Scott Sweeny <scott.sweeny@canonical.com>
 Tony Espy <espy@canonical.com>

@@ -14,17 +14,17 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-project: tpm2
+project: tpm2-simulator
 
 environment:
-    PROJECT_PATH: /home/tpm2
+    PROJECT_PATH: /home/tpm2-simulator
     TESTSLIB: $PROJECT_PATH/tests/lib
-    SNAP_NAME: tpm2
+    SNAP_NAME: tpm2-simulator
     SNAP_ARCH: amd64
     # Allow the host to pass the channel to use for the test run
     SNAP_CHANNEL: $(HOST:echo $SNAP_CHANNEL)
     SNAP_AUTOCONNECT_CORE_PLUGS: home network network-bind tpm
-    SNAP_AUTO_ALIASES: tpm2_activatecredential tpm2_akparse tpm2_certify tpm2_create tpm2_createprimary tpm2_encryptdecrypt tpm2_evictcontrol tpm2_getmanufec tpm2_getpubak tpm2_getpubek tpm2_getrandom tpm2_hash tpm2_hmac tpm2_listpcrs tpm2_load tpm2_loadexternal tpm2_makecredential tpm2_nvdefine tpm2_nvlist tpm2_nvread tpm2_nvrelease tpm2_nvwrite tpm2_quote tpm2_rc_decode tpm2_readpublic tpm2_rsadecrypt tpm2_rsaencrypt tpm2_sign tpm2_takeownership tpm2_unseal tpm2_verifysignature
+    SNAP_AUTO_ALIASES: tpm2_activatecredential tpm2_certify tpm2_changeauth tpm2_clear tpm2_clearlock tpm2_create tpm2_createak tpm2_createek tpm2_createpolicy tpm2_createprimary tpm2_dictionarylockout tpm2_encryptdecrypt tpm2_evictcontrol tpm2_flushcontext tpm2_getcap tpm2_getmanufec tpm2_getrandom tpm2_hash tpm2_hmac tpm2_import tpm2_listpersistent tpm2_load tpm2_loadexternal tpm2_makecredential tpm2_nvdefine tpm2_nvlist tpm2_nvread tpm2_nvreadlock tpm2_nvrelease tpm2_nvwrite tpm2_pcrevent tpm2_pcrextend tpm2_pcrlist tpm2_policyauthorize tpm2_policycommandcode tpm2_policyor tpm2_policypassword tpm2_policypcr tpm2_policyrestart tpm2_policysecret tpm2_print tpm2_quote tpm2_rc_decode tpm2_readpublic tpm2_rsadecrypt tpm2_rsaencrypt tpm2_send tpm2_sign tpm2_startauthsession tpm2_startup tpm2_unseal tpm2_verifysignature
 
 backends:
     qemu:
@@ -34,7 +34,7 @@ backends:
                 password: test
 
 # Put this somewhere where we have read-write access
-path: /home/tpm2
+path: /home/tpm2-simulator
 
 exclude:
   - .git
@@ -44,7 +44,7 @@ prepare: |
 
 suites:
     tests/main/:
-        summary: Install tests for tpm2
+        summary: Install tests for tpm2-simulator
         systems:
             - ubuntu-core-16
         prepare: |

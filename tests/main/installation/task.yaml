@@ -1,4 +1,4 @@
-summary: Test tpm2 snap installation was successful
+summary: Test tpm2-simulator snap installation was successful
 
 execute: |
     # Ensure all necessary plugs/slots are connected
@@ -9,33 +9,54 @@ execute: |
 
     # Verify aliases are set up
     test -x /snap/bin/tpm2_activatecredential
-    test -x /snap/bin/tpm2_akparse
     test -x /snap/bin/tpm2_certify
+    test -x /snap/bin/tpm2_changeauth
+    test -x /snap/bin/tpm2_clear
+    test -x /snap/bin/tpm2_clearlock
     test -x /snap/bin/tpm2_create
+    test -x /snap/bin/tpm2_createak
+    test -x /snap/bin/tpm2_createek
+    test -x /snap/bin/tpm2_createpolicy
     test -x /snap/bin/tpm2_createprimary
+    test -x /snap/bin/tpm2_dictionarylockout
     test -x /snap/bin/tpm2_encryptdecrypt
     test -x /snap/bin/tpm2_evictcontrol
+    test -x /snap/bin/tpm2_flushcontext
+    test -x /snap/bin/tpm2_getcap
     test -x /snap/bin/tpm2_getmanufec
-    test -x /snap/bin/tpm2_getpubak
-    test -x /snap/bin/tpm2_getpubek
     test -x /snap/bin/tpm2_getrandom
     test -x /snap/bin/tpm2_hash
     test -x /snap/bin/tpm2_hmac
-    test -x /snap/bin/tpm2_listpcrs
+    test -x /snap/bin/tpm2_import
+    test -x /snap/bin/tpm2_listpersistent
     test -x /snap/bin/tpm2_load
     test -x /snap/bin/tpm2_loadexternal
     test -x /snap/bin/tpm2_makecredential
     test -x /snap/bin/tpm2_nvdefine
     test -x /snap/bin/tpm2_nvlist
     test -x /snap/bin/tpm2_nvread
+    test -x /snap/bin/tpm2_nvreadlock
     test -x /snap/bin/tpm2_nvrelease
     test -x /snap/bin/tpm2_nvwrite
+    test -x /snap/bin/tpm2_pcrevent
+    test -x /snap/bin/tpm2_pcrextend
+    test -x /snap/bin/tpm2_pcrlist
+    test -x /snap/bin/tpm2_policyauthorize
+    test -x /snap/bin/tpm2_policycommandcode
+    test -x /snap/bin/tpm2_policyor
+    test -x /snap/bin/tpm2_policypassword
+    test -x /snap/bin/tpm2_policypcr
+    test -x /snap/bin/tpm2_policyrestart
+    test -x /snap/bin/tpm2_policysecret
+    test -x /snap/bin/tpm2_print
     test -x /snap/bin/tpm2_quote
     test -x /snap/bin/tpm2_rc_decode
     test -x /snap/bin/tpm2_readpublic
     test -x /snap/bin/tpm2_rsadecrypt
     test -x /snap/bin/tpm2_rsaencrypt
+    test -x /snap/bin/tpm2_send
     test -x /snap/bin/tpm2_sign
-    test -x /snap/bin/tpm2_takeownership
+    test -x /snap/bin/tpm2_startauthsession
+    test -x /snap/bin/tpm2_startup
     test -x /snap/bin/tpm2_unseal
     test -x /snap/bin/tpm2_verifysignature

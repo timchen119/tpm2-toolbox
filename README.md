@@ -8,7 +8,15 @@ The snap will invoke a TPM 2.0 software simulator daemon from IBM and tpm2-abrmd
 
 Please run these examples under your home directory.
 
-TIP: To manually setup alias with "tpm2_", you can use the following command to setup snap alias:
+TIP: 
+
+Install local build snap
+```bash
+sudo snap install tpm2-simulator*.snap --dangerous
+sudo snap connect tpm2-simulator:tpm
+```
+
+To manually setup alias with "tpm2_", you can use the following command to setup snap alias:
 
 ```bash
 $ for binary in /snap/tpm2-simulator/current/bin/tpm2_*; do command=$(basename $binary | cut -c 6-); sudo snap alias tpm2-simulator.$(echo $command | sed 's/_/-/g') tpm2_$command; done

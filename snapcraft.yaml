@@ -571,6 +571,13 @@ parts:
     configflags:
       - --enable-unit
       - --with-dbuspolicydir=/etc/dbus-1/system.d
+    stage-packages:
+      - libblkid1
+      - libmount1
+      - libpcre3
+      - libselinux1
+      - libuuid1
+      - libglib2.0-0
     build-packages:
       - libdbus-1-dev
       - libglib2.0-dev
@@ -695,6 +702,8 @@ parts:
     configflags:
       - --with-openssl
       - --with-tpm2
+    stage-pacakges:
+      - libfuse2
     build-packages:
       - libfuse-dev
       - libglib2.0-dev

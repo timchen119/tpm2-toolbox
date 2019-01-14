@@ -17,7 +17,7 @@
 project: tpm2-simulator
 
 environment:
-    PROJECT_PATH: /home/tpm2-simulator
+    PROJECT_PATH: $HOME/tpm2-simulator
     TESTSLIB: $PROJECT_PATH/tests/lib
     SNAP_NAME: tpm2-simulator
     SNAP_ARCH: amd64
@@ -34,7 +34,7 @@ backends:
                 password: test
 
 # Put this somewhere where we have read-write access
-path: /home/tpm2-simulator
+path: $HOME
 
 exclude:
   - .git

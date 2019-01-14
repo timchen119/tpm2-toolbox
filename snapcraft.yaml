@@ -592,7 +592,6 @@ parts:
       #sed -i '/AX_VALGRIND_DFLT(\[drd.*/d' configure.ac
 
       snapcraftctl build
-
       dbus-launch make check -j8
 
   tpm2-tools:
@@ -649,9 +648,11 @@ parts:
     after:
       - tpm2-tss
       - tpm2-abrmd
-    install: |
+    override-build: |
+      snapcraftctl build
       # Run all tests shipped by default
       make check -j8
+      make install
 
   ibmtpm20tss:
     plugin: autotools
@@ -702,7 +703,7 @@ parts:
     configflags:
       - --with-openssl
       - --with-tpm2
-    stage-pacakges:
+    stage-packages:
       - libfuse2
     build-packages:
       - libfuse-dev

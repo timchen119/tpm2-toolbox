@@ -26,6 +26,9 @@ apps:
     daemon: simple
     plugs: [tpm, network-bind]
     slots: [tpm2-abrmd-dbus]
+  swtpm:
+    command: bin/swtpm
+    plugs: [tpm, network, home]
   activatecredential:
     command: bin/tpm2_activatecredential
     plugs: [tpm, network, home]
@@ -664,3 +667,43 @@ parts:
       make -j8
       mkdir -p $SNAPCRAFT_PART_INSTALL/sbin/
       mv tpm_server $SNAPCRAFT_PART_INSTALL/sbin/
+
+  libtpms:
+    plugin: autotools
+    source: https://github.com/stefanberger/libtpms.git
+    source-type: git
+    configflags:
+      - --with-openssl
+      - --with-tpm2
+    build-packages:
+      - libtool
+      - automake
+      - autoconf
+      - gcc
+      - build-essential
+      - libssl-dev
+      - dh-exec
+      - pkg-config
+      - net-tools
+    after:
+      - ibmswtpm2
+
+  swtpm:
+    plugin: autotools
+    source: https://github.com/stefanberger/swtpm.git
+    source-type: git
+    configflags:
+      - --with-openssl
+      - --with-tpm2
+    build-packages:
+      - libfuse-dev
+      - libglib2.0-dev
+      - libgmp-dev
+      - expect
+      - libtasn1-6-dev
+      - socat
+      - python3-twisted
+      - gnutls-dev
+      - gnutls-bin
+    after:
+      - libtpms

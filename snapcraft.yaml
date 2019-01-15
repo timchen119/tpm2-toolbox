@@ -704,7 +704,6 @@ parts:
     source-type: git
     configflags:
       - --with-openssl
-      - --with-tpm2
     stage-packages:
       - libfuse2
     build-packages:

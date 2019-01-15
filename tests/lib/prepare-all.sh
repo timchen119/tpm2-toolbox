@@ -8,7 +8,7 @@ fi
 
 # Set up classic snap and build the tpm2 snap in there
 snap install --devmode --beta classic
-cat <<-EOF > $HOME/build-snap.sh
+cat <<-EOF > /home/tpm2-simulator/build-snap.sh
 #!/bin/sh
 set -ex
 apt update

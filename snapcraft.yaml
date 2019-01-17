@@ -558,7 +558,7 @@ parts:
       #- libssl1.0.0 #16.04
       - libgpg-error0
     override-build: |
-      ./bootstrap
+      ACLOCAL_PATH="/usr/share/gnulib/m4" ./bootstrap #https://github.com/tpm2-software/tpm2-tss/commit/d1106347ef2f8e7296f1bd6af7aa6e046f6a5a38
       ./configure --enable-unit --prefix=$SNAPCRAFT_PART_INSTALL/usr/
       make check -j8
       make install

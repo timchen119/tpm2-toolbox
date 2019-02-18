@@ -1,4 +1,4 @@
-summary: Test tpm2-simulator snap installation was successful
+summary: Test tpm2-toolbox snap installation was successful
 
 execute: |
     # Ensure all necessary plugs/slots are connected

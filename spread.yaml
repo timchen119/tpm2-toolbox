@@ -14,12 +14,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-project: tpm2-simulator
+project: tpm2-toolbox
 
 environment:
-    PROJECT_PATH: /home/tpm2-simulator
+    PROJECT_PATH: /home/tpm2-toolbox
     TESTSLIB: $PROJECT_PATH/tests/lib
-    SNAP_NAME: tpm2-simulator
+    SNAP_NAME: tpm2-toolbox
     SNAP_ARCH: amd64
     # Allow the host to pass the channel to use for the test run
     SNAP_CHANNEL: $(HOST:echo $SNAP_CHANNEL)
@@ -34,7 +34,7 @@ backends:
                 password: test
 
 # Put this somewhere where we have read-write access
-path: /home/tpm2-simulator
+path: /home/tpm2-toolbox
 
 exclude:
   - .git
@@ -44,7 +44,7 @@ prepare: |
 
 suites:
     tests/main/:
-        summary: Install tests for tpm2-simulator
+        summary: Install tests for tpm2-toolbox
         systems:
             - ubuntu-core-16
         prepare: |

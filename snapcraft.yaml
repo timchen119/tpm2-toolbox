@@ -1,5 +1,5 @@
-name: tpm2-simulator
-version: tpm2.gitmaster+ibmswtpm2.1332
+name: tpm2-toolbox
+version: 1tpm2.gitmaster+ibmswtpm2.1332
 summary: TPM 2.0 utilities
 
 description: |
@@ -28,7 +28,7 @@ apps:
     slots: [tpm2-abrmd-dbus]
   swtpm:
     command: bin/swtpm
-    plugs: [tpm, network, home]
+    plugs: [tpm, network-bind, home]
   activatecredential:
     command: bin/tpm2_activatecredential
     plugs: [tpm, network, home]
@@ -37,6 +37,9 @@ apps:
     plugs: [tpm, network, home]
   changeauth:
     command: bin/tpm2_changeauth
+    plugs: [tpm, network, home]
+  checkquote:
+    command: bin/tpm2_checkquote
     plugs: [tpm, network, home]
   clear:
     command: bin/tpm2_clear
@@ -127,6 +130,9 @@ apps:
     plugs: [tpm, network, home]
   pcrlist:
     command: bin/tpm2_pcrlist
+    plugs: [tpm, network, home]
+  pcrreset:
+    command: bin/tpm2_pcrreset
     plugs: [tpm, network, home]
   policyauthorize:
     command: bin/tpm2_policyauthorize
@@ -524,6 +530,12 @@ apps:
   tsszgen2phase:
     command: bin/tsszgen2phase
     plugs: [tpm, network, home]
+  swtpm-start:
+    command: bin/swtpm-start.sh
+    plugs: [tpm, network, home]
+  test-eapolicy:
+    command: bin/test-eapolicy.sh
+    plugs: [tpm, network, home]
 
 parts:
   common:
@@ -560,7 +572,7 @@ parts:
     override-build: |
       ACLOCAL_PATH="/usr/share/gnulib/m4" ./bootstrap #https://github.com/tpm2-software/tpm2-tss/commit/d1106347ef2f8e7296f1bd6af7aa6e046f6a5a38
       ./configure --enable-unit --prefix=$SNAPCRAFT_PART_INSTALL/usr/
-      make check -j8
+      make check -j$(nproc)
       make install
 
   tpm2-abrmd:
@@ -592,7 +604,7 @@ parts:
       #sed -i '/AX_VALGRIND_DFLT(\[drd.*/d' configure.ac
 
       snapcraftctl build
-      dbus-launch make check -j8
+      dbus-launch make check -j$(nproc)
 
   tpm2-tools:
     plugin: autotools
@@ -653,7 +665,7 @@ parts:
     override-build: |
       snapcraftctl build
       # Run all tests shipped by default
-      make check -j8
+      make check -j$(nproc)
       make install
 
   ibmtpm20tss:
@@ -674,7 +686,7 @@ parts:
       - ibmtpm20tss
     override-build: |
       cd src
-      make -j8
+      make -j$(nproc)
       mkdir -p $SNAPCRAFT_PART_INSTALL/sbin/
       mv tpm_server $SNAPCRAFT_PART_INSTALL/sbin/
 
@@ -716,5 +728,16 @@ parts:
       - python3-twisted
       - gnutls-dev
       - gnutls-bin
+      - gawk
     after:
       - libtpms
+    organize:
+      lib/swtpm/*: lib/
+
+  example-scripts:
+    plugin: dump
+    source: example-scripts
+    organize:
+      swtpm-start.sh: bin/swtpm-start.sh
+      test-eapolicy.sh: bin/test-eapolicy.sh
+    after: [swtpm]

@@ -532,7 +532,7 @@ apps:
     plugs: [tpm, network, home]
   swtpm-start:
     command: bin/swtpm-start.sh
-    plugs: [tpm, network, home]
+    plugs: [tpm, network-bind, home]
   test-eapolicy:
     command: bin/test-eapolicy.sh
     plugs: [tpm, network, home]

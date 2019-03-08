@@ -4,32 +4,36 @@ Set of utilities and a daemon to deal with TPM 2.0 chips built into a wide range
 
 The snap will invoke a TPM 2.0 software simulator daemon from IBM and tpm2-abrmd TPM2 access broker & resource management daemon by default.
 
+If you don't have a TPM 2.0 hardware, you can test the commands thorugh abrmd to the TPM 2.0 software simulator daemon.
+
+Or you can start a KVM/QEMU image with swtpm to test your system.
+
+If you already have a TPM 2.0 hardware, you can also use this snap to connect to the hardware with in-kernel RM or direct access the device.
+
+## Install the snap
+
+```bash
+$ sudo snap install tpm2-toolbox
+$ sudo snap connect tpm2-toolbox:tpm
+```
+
 ## Example usage
-
-Please run these examples under your home directory.
-
-TIP: 
-
-Install local build snap
-```bash
-sudo snap install tpm2-toolbox*.snap --dangerous
-sudo snap connect tpm2-toolbox:tpm
-```
-
-To manually setup alias with "tpm2_", you can use the following command to setup snap alias:
-
-```bash
-$ for binary in /snap/tpm2-toolbox/current/bin/tpm2_*; do command=$(basename $binary | cut -c 6-); sudo snap alias tpm2-toolbox.$(echo $command | sed 's/_/-/g') tpm2_$command; done
-```
 
 Use tpm2_clear to clear the TPM:
 ```bash
-$ sudo tpm2_clear -T device:/dev/tpmrm0
+$ sudo tpm2-toolbox.clear -T device:/dev/tpmrm0
 ```
 
 To test if your TPM2 H/W works:
 ```bash
 $ sudo tpm2-toolbox.pcrlist -T device:/dev/tpmrm0
+```
+
+### Tips
+To manually setup the commands alias to start with "tpm2_", you can use the following command to setup snap alias:
+
+```bash
+$ for binary in /snap/tpm2-toolbox/current/bin/tpm2_*; do command=$(basename $binary | cut -c 6-); sudo snap alias tpm2-toolbox.$(echo $command | sed 's/_/-/g') tpm2_$command; done
 ```
 
 ### Without TPM2 H/W
@@ -77,7 +81,9 @@ You need logout to make the change or you can use `newgrp` to change the group i
 $ newgrp kvm
 ```
 
-Run kvm with swtpm as chardev, for example
+Run kvm with swtpm as chardev, for example you can invoke an Ubuntu Core 16 image
+with kvm and swtpm to have a Ubuntu Core system with TPM 2.0 emulated.
+
 ```
 $ kvm -smp 2 -m 512 \
   -net user -net nic -redir tcp:8022::22 \

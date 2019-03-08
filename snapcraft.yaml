@@ -173,6 +173,9 @@ apps:
   rsaencrypt:
     command: bin/tpm2_rsaencrypt
     plugs: [tpm, network, home]
+  selftest:
+    command: bin/tpm2_selftest
+    plugs: [tpm, network, home]
   send:
     command: bin/tpm2_send
     plugs: [tpm, network, home]
@@ -184,6 +187,9 @@ apps:
     plugs: [tpm, network, home]
   startup:
     command: bin/tpm2_startup
+    plugs: [tpm, network, home]
+  stirrandom:
+    command: bin/tpm2_stirrandom
     plugs: [tpm, network, home]
   unseal:
     command: bin/tpm2_unseal

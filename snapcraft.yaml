@@ -107,6 +107,9 @@ apps:
   nvdefine:
     command: bin/tpm2_nvdefine
     plugs: [tpm, network, home]
+  nvincrement:
+    command: bin/tpm2_nvincrement
+    plugs: [tpm, network, home]
   nvlist:
     command: bin/tpm2_nvlist
     plugs: [tpm, network, home]

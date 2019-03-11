@@ -11,4 +11,4 @@ cleanup() {
 trap cleanup INT TERM EXIT
 
 echo "start swtpm with TPM state path $TPMSTATE_PATH and socket path $SOCK_PATH"
-sh -c "$SNAP/bin/swtpm $@ socket --tpmstate dir=$TPMSTATE_PATH --tpm2 --ctrl type=unixio,path=$SOCK_PATH"
+sh -c "$SNAP/bin/swtpm $@ socket --tpmstate dir=$TPMSTATE_PATH --tpm2 --ctrl type=unixio,path=$SOCK_PATH --daemon"

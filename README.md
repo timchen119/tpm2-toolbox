@@ -88,7 +88,6 @@ with kvm and swtpm to have a Ubuntu Core system with TPM 2.0 emulated.
 $ sudo apt install ovmf
 $ wget http://cdimage.ubuntu.com/ubuntu-core/16/stable/ubuntu-core-16-amd64.img.xz
 $ xz -d ubuntu-core-16-amd64.img.xz
-$ fallocate -l 8G testdisk.raw
 $ kvm -smp 2 -m 512 \
   -net user -net nic -redir tcp:8022::22 \
   -smbios type=1,serial=1234567 \
@@ -97,5 +96,11 @@ $ kvm -smp 2 -m 512 \
   -drive if=none,id=stick,format=raw,file=ubuntu-core-16-amd64.img \
   -chardev socket,id=chrtpm,path=$(ls $HOME/snap/tpm2-toolbox/current/tpm-*.sock) \
   -tpmdev emulator,id=tpm0,chardev=chrtpm -device tpm-tis,tpmdev=tpm0 \
-  -hda testdisk.raw -nographic
+  -nographic
+```
+
+Finish the console-conf to setup your account, after that you can ssh to local 8022 port
+and you will have a Ubuntu Core 16 system with TPM2.
+```
+$ ssh yourname@127.0.0.1 -p 8022
 ```

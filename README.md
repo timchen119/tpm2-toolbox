@@ -25,8 +25,15 @@ $ sudo tpm2-toolbox.clear -T device:/dev/tpmrm0
 ```
 
 To test if your TPM2 H/W works:
+
+For kernel version 4.11+:
 ```bash
 $ sudo tpm2-toolbox.pcrlist -T device:/dev/tpmrm0
+```
+
+For kernel older than 4.11:
+```bash
+$ sudo tpm2-toolbox.pcrlist -T device:/dev/tpm0
 ```
 
 ### Tips

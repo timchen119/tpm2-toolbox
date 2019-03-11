@@ -77,8 +77,9 @@ check test-eapolicy.sh in the repo.
 
 Start a seperate `swtpm` process:
 ```
-$ tpm2-toolbox.swtpm-start
+$ tpm2-toolbox.swtpm-start &
 ```
+
 Make sure your login user is being added in the `kvm` group:
 ```
 $ sudo adduser `id -un` kvm

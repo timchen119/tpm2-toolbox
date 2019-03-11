@@ -85,12 +85,17 @@ Run kvm with swtpm as chardev, for example you can invoke an Ubuntu Core 16 imag
 with kvm and swtpm to have a Ubuntu Core system with TPM 2.0 emulated.
 
 ```
+$ sudo apt install ovmf
+$ wget http://cdimage.ubuntu.com/ubuntu-core/16/stable/ubuntu-core-16-amd64.img.xz
+$ xz -d ubuntu-core-16-amd64.img.xz
+$ fallocate -l 8G testdisk.raw
 $ kvm -smp 2 -m 512 \
   -net user -net nic -redir tcp:8022::22 \
   -smbios type=1,serial=1234567 \
   -device nec-usb-xhci,id=xhci -device usb-storage,bus=xhci.0,drive=stick,removable=on \
   -drive if=pflash,format=raw,readonly,file=/usr/share/OVMF/OVMF_CODE.fd \
   -drive if=none,id=stick,format=raw,file=ubuntu-core-16-amd64.img \
-  -chardev socket,id=chrtpm,path=$HOME/tpm-*.sock -tpmdev emulator,id=tpm0,chardev=chrtpm -device tpm-tis,tpmdev=tpm0 \
+  -chardev socket,id=chrtpm,path=$(ls $HOME/snap/tpm2-toolbox/current/tpm-*.sock) \
+  -tpmdev emulator,id=tpm0,chardev=chrtpm -device tpm-tis,tpmdev=tpm0 \
   -hda testdisk.raw -nographic
 ```

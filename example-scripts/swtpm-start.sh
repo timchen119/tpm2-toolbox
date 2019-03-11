@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TPMSTATE_PATH=tpmstate.$(mktemp --directory --tmpdir=$HOME)
+TPMSTATE_PATH=$(mktemp --directory --tmpdir=$HOME tpmstate-XXXXXXXXXX)
 SOCK_PATH=$(mktemp --dry-run --tmpdir=$HOME tpm-XXXXXXXXXX --suffix=.sock)
 
 cleanup() {

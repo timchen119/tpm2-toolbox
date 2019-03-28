@@ -738,6 +738,7 @@ parts:
       - gnutls-dev
       - gnutls-bin
       - gawk
+      - libseccomp-dev
     after:
       - libtpms
     organize:

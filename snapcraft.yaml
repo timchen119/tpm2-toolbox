@@ -84,6 +84,9 @@ apps:
   getrandom:
     command: bin/tpm2_getrandom
     plugs: [tpm, network, home]
+  gettestresult:
+    command: bin/tpm2_gettestresult
+    plugs: [tpm, network, home]
   hash:
     command: bin/tpm2_hash
     plugs: [tpm, network, home]

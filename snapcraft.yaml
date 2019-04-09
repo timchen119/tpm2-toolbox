@@ -9,6 +9,7 @@ description: |
 confinement: strict
 grade: stable
 base: core18
+adopt-info: tpm2-tools
 
 slots:
   tpm2-abrmd-dbus: # name that is used with 'snap connect' on slots side

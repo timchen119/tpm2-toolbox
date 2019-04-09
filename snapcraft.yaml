@@ -89,6 +89,9 @@ apps:
   hmac:
     command: bin/tpm2_hmac
     plugs: [tpm, network, home]
+  incrementalselftest:
+    command: bin/tpm2_incrementalselftest
+    plugs: [tpm, network, home]
   import:
     command: bin/tpm2_import
     plugs: [tpm, network, home]
@@ -125,6 +128,9 @@ apps:
   nvwrite:
     command: bin/tpm2_nvwrite
     plugs: [tpm, network, home]
+  pcrallocate:
+    command: bin/tpm2_pcrallocate
+    plugs: [tpm, network, home]
   pcrevent:
     command: bin/tpm2_pcrevent
     plugs: [tpm, network, home]
@@ -142,6 +148,12 @@ apps:
     plugs: [tpm, network, home]
   policycommandcode:
     command: bin/tpm2_policycommandcode
+    plugs: [tpm, network, home]
+  policyduplicationselect:
+    command: bin/tpm2_policyduplicationselect
+    plugs: [tpm, network, home]
+  policylocality:
+    command: bin/tpm2_policylocality
     plugs: [tpm, network, home]
   policyor:
     command: bin/tpm2_policyor
@@ -193,6 +205,9 @@ apps:
     plugs: [tpm, network, home]
   stirrandom:
     command: bin/tpm2_stirrandom
+    plugs: [tpm, network, home]
+  testparms:
+    command: bin/tpm2_testparms
     plugs: [tpm, network, home]
   unseal:
     command: bin/tpm2_unseal
@@ -671,6 +686,9 @@ parts:
     after:
       - tpm2-tss
       - tpm2-abrmd
+    override-pull: |
+      snapcraftctl pull
+      snapcraftctl set-version tpm2tools.$(git show --format="%h" --no-patch)
     override-build: |
       snapcraftctl build
       # Run all tests shipped by default

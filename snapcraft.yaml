@@ -1,5 +1,5 @@
 name: tpm2-toolbox
-version: 1tpm2.gitmaster+ibmswtpm2.1332
+#version: 1tpm2.gitmaster+ibmswtpm2.1332
 summary: TPM 2.0 utilities
 
 description: |

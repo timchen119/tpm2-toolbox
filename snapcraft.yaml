@@ -36,26 +36,8 @@ apps:
   certify:
     command: bin/tpm2_certify
     plugs: [tpm, network, home]
-  changeauth:
-    command: bin/tpm2_changeauth
-    plugs: [tpm, network, home]
-  checkquote:
-    command: bin/tpm2_checkquote
-    plugs: [tpm, network, home]
-  clear:
-    command: bin/tpm2_clear
-    plugs: [tpm, network, home]
-  clearlock:
-    command: bin/tpm2_clearlock
-    plugs: [tpm, network, home]
   create:
     command: bin/tpm2_create
-    plugs: [tpm, network, home]
-  createak:
-    command: bin/tpm2_createak
-    plugs: [tpm, network, home]
-  createek:
-    command: bin/tpm2_createek
     plugs: [tpm, network, home]
   createpolicy:
     command: bin/tpm2_createpolicy
@@ -66,38 +48,32 @@ apps:
   dictionarylockout:
     command: bin/tpm2_dictionarylockout
     plugs: [tpm, network, home]
+  getcap:
+    command: bin/tpm2_getcap
+    plugs: [tpm, network, home]
   encryptdecrypt:
     command: bin/tpm2_encryptdecrypt
     plugs: [tpm, network, home]
   evictcontrol:
     command: bin/tpm2_evictcontrol
     plugs: [tpm, network, home]
-  flushcontext:
-    command: bin/tpm2_flushcontext
-    plugs: [tpm, network, home]
-  getcap:
-    command: bin/tpm2_getcap
-    plugs: [tpm, network, home]
   getmanufec:
     command: bin/tpm2_getmanufec
     plugs: [tpm, network, home]
+  getpubak:
+    command: bin/tpm2_getpubak
+    plugs: [tpm, network, home]
+  getpubek:
+    command: bin/tpm2_getpubek
+    plugs: [tpm, network, home]
   getrandom:
     command: bin/tpm2_getrandom
-    plugs: [tpm, network, home]
-  gettestresult:
-    command: bin/tpm2_gettestresult
     plugs: [tpm, network, home]
   hash:
     command: bin/tpm2_hash
     plugs: [tpm, network, home]
   hmac:
     command: bin/tpm2_hmac
-    plugs: [tpm, network, home]
-  incrementalselftest:
-    command: bin/tpm2_incrementalselftest
-    plugs: [tpm, network, home]
-  import:
-    command: bin/tpm2_import
     plugs: [tpm, network, home]
   listpersistent:
     command: bin/tpm2_listpersistent
@@ -114,9 +90,6 @@ apps:
   nvdefine:
     command: bin/tpm2_nvdefine
     plugs: [tpm, network, home]
-  nvincrement:
-    command: bin/tpm2_nvincrement
-    plugs: [tpm, network, home]
   nvlist:
     command: bin/tpm2_nvlist
     plugs: [tpm, network, home]
@@ -132,9 +105,6 @@ apps:
   nvwrite:
     command: bin/tpm2_nvwrite
     plugs: [tpm, network, home]
-  pcrallocate:
-    command: bin/tpm2_pcrallocate
-    plugs: [tpm, network, home]
   pcrevent:
     command: bin/tpm2_pcrevent
     plugs: [tpm, network, home]
@@ -143,39 +113,6 @@ apps:
     plugs: [tpm, network, home]
   pcrlist:
     command: bin/tpm2_pcrlist
-    plugs: [tpm, network, home]
-  pcrreset:
-    command: bin/tpm2_pcrreset
-    plugs: [tpm, network, home]
-  policyauthorize:
-    command: bin/tpm2_policyauthorize
-    plugs: [tpm, network, home]
-  policycommandcode:
-    command: bin/tpm2_policycommandcode
-    plugs: [tpm, network, home]
-  policyduplicationselect:
-    command: bin/tpm2_policyduplicationselect
-    plugs: [tpm, network, home]
-  policylocality:
-    command: bin/tpm2_policylocality
-    plugs: [tpm, network, home]
-  policyor:
-    command: bin/tpm2_policyor
-    plugs: [tpm, network, home]
-  policypassword:
-    command: bin/tpm2_policypassword
-    plugs: [tpm, network, home]
-  policypcr:
-    command: bin/tpm2_policypcr
-    plugs: [tpm, network, home]
-  policyrestart:
-    command: bin/tpm2_policyrestart
-    plugs: [tpm, network, home]
-  policysecret:
-    command: bin/tpm2_policysecret
-    plugs: [tpm, network, home]
-  print:
-    command: bin/tpm2_print
     plugs: [tpm, network, home]
   quote:
     command: bin/tpm2_quote
@@ -192,26 +129,17 @@ apps:
   rsaencrypt:
     command: bin/tpm2_rsaencrypt
     plugs: [tpm, network, home]
-  selftest:
-    command: bin/tpm2_selftest
-    plugs: [tpm, network, home]
   send:
     command: bin/tpm2_send
     plugs: [tpm, network, home]
   sign:
     command: bin/tpm2_sign
     plugs: [tpm, network, home]
-  startauthsession:
-    command: bin/tpm2_startauthsession
-    plugs: [tpm, network, home]
   startup:
     command: bin/tpm2_startup
     plugs: [tpm, network, home]
-  stirrandom:
-    command: bin/tpm2_stirrandom
-    plugs: [tpm, network, home]
-  testparms:
-    command: bin/tpm2_testparms
+  takeownership:
+    command: bin/tpm2_takeownership
     plugs: [tpm, network, home]
   unseal:
     command: bin/tpm2_unseal

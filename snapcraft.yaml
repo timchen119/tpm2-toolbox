@@ -692,7 +692,7 @@ parts:
       - tpm2-abrmd
     override-pull: |
       snapcraftctl pull
-      snapcraftctl set-version tpm2tools.$(git show --format="%h" --no-patch)
+      snapcraftctl set-version 1.0-tpm2-tools+git-$(git show --format="%h" --no-patch)
     override-build: |
       snapcraftctl build
       # Run all tests shipped by default

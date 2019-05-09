@@ -66,6 +66,9 @@ apps:
   dictionarylockout:
     command: bin/tpm2_dictionarylockout
     plugs: [tpm, network, home]
+  duplicate:
+    command: bin/tpm2_duplicate
+    plugs: [tpm, network, home]
   encryptdecrypt:
     command: bin/tpm2_encryptdecrypt
     plugs: [tpm, network, home]

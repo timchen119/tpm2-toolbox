@@ -17,6 +17,16 @@ $ sudo snap install tpm2-toolbox
 $ sudo snap connect tpm2-toolbox:tpm
 ```
 
+# Notice
+
+Currently (2019-05-09) the latest stable release of tpm2-tools is 3.1.4,
+If you would like to get the latest master branch of tpm2-tools, please use the
+following commands:
+
+```bash
+$ sudo snap install tpm2-toolbox --edge
+```
+
 ## Example usage
 
 Use tpm2_clear to clear the TPM:

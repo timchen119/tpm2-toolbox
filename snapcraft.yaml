@@ -45,7 +45,7 @@ apps:
   clear:
     command: bin/tpm2_clear
     plugs: [tpm, network, home]
-  clearlock:
+  clearcontrol:
     command: bin/tpm2_clearlock
     plugs: [tpm, network, home]
   create:

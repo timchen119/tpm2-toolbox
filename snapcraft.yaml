@@ -144,8 +144,8 @@ apps:
   pcrextend:
     command: bin/tpm2_pcrextend
     plugs: [tpm, network, home]
-  pcrlist:
-    command: bin/tpm2_pcrlist
+  pcrread:
+    command: bin/tpm2_pcrread
     plugs: [tpm, network, home]
   pcrreset:
     command: bin/tpm2_pcrreset

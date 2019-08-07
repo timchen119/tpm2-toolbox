@@ -595,6 +595,7 @@ parts:
       - libssl-dev
       - libgcrypt20-dev
       - doxygen
+      - libltdl-dev
     stage-packages:
       - libgcrypt20
       - libssl1.1

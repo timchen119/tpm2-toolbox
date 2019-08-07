@@ -707,7 +707,6 @@ parts:
     plugin: autotools
     source: https://git.code.sf.net/p/ibmtpm20tss/tss
     source-type: git
-    source-tag: autotoolsv2
     configflags:
       - --disable-tpm-1.2
     after:

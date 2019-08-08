@@ -129,6 +129,9 @@ apps:
   nvreadlock:
     command: bin/tpm2_nvreadlock
     plugs: [tpm, network, home]
+  nvundefine:
+    command: bin/tpm2_nvundefine
+    plugs: [tpm, network, home]
   nvwrite:
     command: bin/tpm2_nvwrite
     plugs: [tpm, network, home]
@@ -212,9 +215,6 @@ apps:
     plugs: [tpm, network, home]
   testparms:
     command: bin/tpm2_testparms
-    plugs: [tpm, network, home]
-  undefine:
-    command: bin/tpm2_undefine
     plugs: [tpm, network, home]
   unseal:
     command: bin/tpm2_unseal

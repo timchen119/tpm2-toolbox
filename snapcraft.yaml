@@ -93,6 +93,9 @@ apps:
   hash:
     command: bin/tpm2_hash
     plugs: [tpm, network, home]
+  hierarchycontrol:
+    command: bin/tpm2_hierarchycontrol
+    plugs: [tpm, network, home]
   hmac:
     command: bin/tpm2_hmac
     plugs: [tpm, network, home]

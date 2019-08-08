@@ -81,8 +81,8 @@ apps:
   getcap:
     command: bin/tpm2_getcap
     plugs: [tpm, network, home]
-  getmanufec:
-    command: bin/tpm2_getmanufec
+  getekcertificate:
+    command: bin/tpm2_getekcertificate
     plugs: [tpm, network, home]
   getrandom:
     command: bin/tpm2_getrandom
@@ -120,17 +120,14 @@ apps:
   nvincrement:
     command: bin/tpm2_nvincrement
     plugs: [tpm, network, home]
-  nvlist:
-    command: bin/tpm2_nvlist
+  nvreadpublic:
+    command: bin/tpm2_nvreadpublic
     plugs: [tpm, network, home]
   nvread:
     command: bin/tpm2_nvread
     plugs: [tpm, network, home]
   nvreadlock:
     command: bin/tpm2_nvreadlock
-    plugs: [tpm, network, home]
-  nvrelease:
-    command: bin/tpm2_nvrelease
     plugs: [tpm, network, home]
   nvwrite:
     command: bin/tpm2_nvwrite
@@ -215,6 +212,9 @@ apps:
     plugs: [tpm, network, home]
   testparms:
     command: bin/tpm2_testparms
+    plugs: [tpm, network, home]
+  undefine:
+    command: bin/tpm2_undefine
     plugs: [tpm, network, home]
   unseal:
     command: bin/tpm2_unseal

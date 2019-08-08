@@ -102,9 +102,6 @@ apps:
   import:
     command: bin/tpm2_import
     plugs: [tpm, network, home]
-  listpersistent:
-    command: bin/tpm2_listpersistent
-    plugs: [tpm, network, home]
   load:
     command: bin/tpm2_load
     plugs: [tpm, network, home]

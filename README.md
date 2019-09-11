@@ -19,7 +19,7 @@ $ sudo snap connect tpm2-toolbox:tpm
 
 # Notice
 
-Currently (2019-05-09) the latest stable release of tpm2-tools is 3.1.4,
+Currently (2019-09-11) the latest stable release of tpm2-tools is 4.0,
 If you would like to get the latest master branch of tpm2-tools, please use the
 following commands:
 
@@ -38,12 +38,12 @@ To test if your TPM2 H/W works:
 
 For kernel version 4.11+:
 ```bash
-$ sudo tpm2-toolbox.pcrlist -T device:/dev/tpmrm0
+$ sudo tpm2-toolbox.pcrread -T device:/dev/tpmrm0
 ```
 
 For kernel older than 4.11:
 ```bash
-$ sudo tpm2-toolbox.pcrlist -T device:/dev/tpm0
+$ sudo tpm2-toolbox.pcrread -T device:/dev/tpm0
 ```
 
 ### Tips
@@ -56,25 +56,25 @@ $ for binary in /snap/tpm2-toolbox/current/bin/tpm2_*; do command=$(basename $bi
 ### Without TPM2 H/W
 
 ```bash
-$ tpm2-toolbox.pcrlist --sel-list sha256:0 --out-file pcr0.bin
-$ tpm2-toolbox.createpolicy --policy-pcr --set-list sha256:0 --pcr-input-file pcr0.bin --policy-file policy.digest
-$ tpm2-toolbox.createprimary -a o --halg sha256 --kalg rsa -o primary.context
-$ tpm2-toolbox.create --halg 0x000B --pubfile obj.pub --privfile obj.priv --context-parent primary.context -L policy.digest --object-attributes 0x492 -I- <<< "MYSECRET"
-$ tpm2-toolbox.load --pubfile obj.pub --privfile obj.priv --context-parent primary.context --name load.name --out-context load.context
+$ tpm2-toolbox.pcrread sha256:0 --output pcr0.bin
+$ tpm2-toolbox.createpolicy --policy-pcr --pcr-list sha256:0 --pcr pcr0.bin --policy policy.digest
+$ tpm2-toolbox.createprimary --hierarchy o --hash-algorithm sha256 --key-algorithm rsa --key-context primary.context
+$ tpm2-toolbox.create --hash-algorithm sha256 --public obj.pub --private obj.priv --parent-context primary.context --policy policy.digest --attributes 0x492 --sealing-input - <<< "MYSECRET"
+$ tpm2-toolbox.load --public obj.pub --private obj.priv --parent-context primary.context --name load.name --key-context load.context
 
-$ tpm2-toolbox.unseal -c load.context --set-list 0xB:0 --pcr-input-file pcr0.bin
+$ tpm2-toolbox.unseal --object-contex load.context --auth pcr:sha256:0=pcr0.bin
 ```
 
 ### With TPM2 H/W
 
 ```bash
-$ sudo tpm2-toolbox.pcrlist --sel-list sha256:0 --out-file pcr0.bin -T device:/dev/tpmrm0
-$ sudo tpm2-toolbox.createpolicy --policy-pcr --set-list sha256:0 --pcr-input-file pcr0.bin --policy-file policy.digest -T device:/dev/tpmrm0
-$ sudo tpm2-toolbox.createprimary -a o --halg sha256 --kalg rsa -o primary.context -T device:/dev/tpmrm0
-$ sudo tpm2-toolbox.create --halg 0x000B --pubfile obj.pub --privfile obj.priv --context-parent primary.context -L policy.digest --object-attributes 0x492 -I- <<< "MYSECRET" -T device:/dev/tpmrm0
-$ sudo tpm2-toolbox.load --pubfile obj.pub --privfile obj.priv --context-parent primary.context --name load.name --out-context load.context -T device:/dev/tpmrm0
+$ sudo tpm2-toolbox.pcrlist --sel-list sha256:0 --out-file pcr0.bin --tcti device:/dev/tpmrm0
+$ sudo tpm2-toolbox.createpolicy --policy-pcr --pcr-list sha256:0 --pcr pcr0.bin --policy policy.digest --tcti device:/dev/tpmrm0
+$ sudo tpm2-toolbox.createprimary --hierarchy o --hash-algorithm sha256 --key-algorithm rsa --key-context primary.context --tcti device:/dev/tpmrm0
+$ sudo tpm2-toolbox.create --hash-algorithm sha256 --public obj.pub --private obj.priv --parent-context primary.context --policy policy.digest --attributes 0x492 --sealing-input - <<< "MYSECRET" --tcti device:/dev/tpmrm0
+$ sudo tpm2-toolbox.load --public obj.pub --private obj.priv --parent-context primary.context --name load.name --key-context load.context --tcti device:/dev/tpmrm0
 
-$ sudo tpm2-toolbox.unseal -c load.context --set-list 0xB:0 --pcr-input-file pcr0.bin -T device:/dev/tpmrm0
+$ sudo tpm2-toolbox.unseal --object-contex load.context --auth pcr:sha256:0=pcr0.bin --tcti device:/dev/tpmrm0
 ```
 
 export TPM2TOOLS_TCTI=device:/dev/tpmrm0 and run commands `sudo -E` will work too.

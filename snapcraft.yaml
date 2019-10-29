@@ -181,7 +181,7 @@ apps:
     command: bin/tpm2_policyauthorizenv
     plugs: [tpm, network, home]
   policyauthvalue:
-    command: bin/policyauthvalue
+    command: bin/tpm2_policyauthvalue
     plugs: [tpm, network, home]
   policycommandcode:
     command: bin/tpm2_policycommandcode

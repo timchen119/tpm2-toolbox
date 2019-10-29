@@ -39,6 +39,12 @@ apps:
   changeauth:
     command: bin/tpm2_changeauth
     plugs: [tpm, network, home]
+  changeeps:
+    command: bin/tpm2_changeeps
+    plugs: [tpm, network, home]
+  changepps:
+    command: bin/tpm2_changepps
+    plugs: [tpm, network, home]
   checkquote:
     command: bin/tpm2_checkquote
     plugs: [tpm, network, home]
@@ -47,6 +53,9 @@ apps:
     plugs: [tpm, network, home]
   clearcontrol:
     command: bin/tpm2_clearcontrol
+    plugs: [tpm, network, home]
+  clockrateadjust:
+    command: bin/tpm2_clockrateadjust
     plugs: [tpm, network, home]
   create:
     command: bin/tpm2_create
@@ -90,6 +99,9 @@ apps:
   gettestresult:
     command: bin/tpm2_gettestresult
     plugs: [tpm, network, home]
+  gettime:
+    command: bin/tpm2_gettime
+    plugs: [tpm, network, home]
   hash:
     command: bin/tpm2_hash
     plugs: [tpm, network, home]
@@ -114,8 +126,14 @@ apps:
   makecredential:
     command: bin/tpm2_makecredential
     plugs: [tpm, network, home]
+  nvcertify:
+    command: bin/tpm2_nvcertify
+    plugs: [tpm, network, home]
   nvdefine:
     command: bin/tpm2_nvdefine
+    plugs: [tpm, network, home]
+  nvextend:
+    command: bin/tpm2_nvextend
     plugs: [tpm, network, home]
   nvincrement:
     command: bin/tpm2_nvincrement
@@ -129,11 +147,17 @@ apps:
   nvreadlock:
     command: bin/tpm2_nvreadlock
     plugs: [tpm, network, home]
+  nvsetbits:
+    command: bin/tpm2_nvsetbits
+    plugs: [tpm, network, home]
   nvundefine:
     command: bin/tpm2_nvundefine
     plugs: [tpm, network, home]
   nvwrite:
     command: bin/tpm2_nvwrite
+    plugs: [tpm, network, home]
+  nvwritelock:
+    command: bin/tpm2_nvwritelock
     plugs: [tpm, network, home]
   pcrallocate:
     command: bin/tpm2_pcrallocate
@@ -153,6 +177,12 @@ apps:
   policyauthorize:
     command: bin/tpm2_policyauthorize
     plugs: [tpm, network, home]
+  policyauthorizenv:
+    command: bin/tpm2_policyauthorizenv
+    plugs: [tpm, network, home]
+  policyauthvalue:
+    command: bin/policyauthvalue
+    plugs: [tpm, network, home]
   policycommandcode:
     command: bin/tpm2_policycommandcode
     plugs: [tpm, network, home]
@@ -161,6 +191,12 @@ apps:
     plugs: [tpm, network, home]
   policylocality:
     command: bin/tpm2_policylocality
+    plugs: [tpm, network, home]
+  policynv:
+    command: tpm2_policynv
+    plugs: [tpm, network, home]
+  policynvwritten:
+    command: tpm2_policynvwritten
     plugs: [tpm, network, home]
   policyor:
     command: bin/tpm2_policyor
@@ -177,6 +213,12 @@ apps:
   policysecret:
     command: bin/tpm2_policysecret
     plugs: [tpm, network, home]
+  policysigned:
+    command: bin/tpm2_policysigned
+    plugs: [tpm, network, home]
+  policyticket:
+    command: bin/tpm2_policyticket
+    plugs: [tpm, network, home]
   print:
     command: bin/tpm2_print
     plugs: [tpm, network, home]
@@ -185,6 +227,9 @@ apps:
     plugs: [tpm, network, home]
   rc-decode:
     command: bin/tpm2_rc_decode
+    plugs: [tpm, network, home]
+  readclock:
+    command: bin/tpm2_readclock
     plugs: [tpm, network, home]
   readpublic:
     command: bin/tpm2_readpublic
@@ -201,6 +246,12 @@ apps:
   send:
     command: bin/tpm2_send
     plugs: [tpm, network, home]
+  setclock:
+    command: bin/tpm2_setclock
+    plugs: [tpm, network, home]
+  setprimarypolicy:
+    command: bin/tpm2_setprimarypolicy
+    plugs: [tpm, network, home]
   sign:
     command: bin/tpm2_sign
     plugs: [tpm, network, home]
@@ -212,6 +263,9 @@ apps:
     plugs: [tpm, network, home]
   stirrandom:
     command: bin/tpm2_stirrandom
+    plugs: [tpm, network, home]
+  shutdown:
+    command: bin/tpm2_shutdown
     plugs: [tpm, network, home]
   testparms:
     command: bin/tpm2_testparms

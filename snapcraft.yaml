@@ -36,6 +36,9 @@ apps:
   certify:
     command: bin/tpm2_certify
     plugs: [tpm, network, home]
+  certifycreation:
+    command: bin/tpm2_certifycreation
+    plugs: [tpm, network, home]
   changeauth:
     command: bin/tpm2_changeauth
     plugs: [tpm, network, home]
@@ -186,11 +189,17 @@ apps:
   policycommandcode:
     command: bin/tpm2_policycommandcode
     plugs: [tpm, network, home]
+  policycountertimer:
+    command: bin/tpm2_policycountertimer
+    plugs: [tpm, network, home]
   policyduplicationselect:
     command: bin/tpm2_policyduplicationselect
     plugs: [tpm, network, home]
   policylocality:
     command: bin/tpm2_policylocality
+    plugs: [tpm, network, home]
+  policynamehash:
+    command: bin/tpm2_policynamehash
     plugs: [tpm, network, home]
   policynv:
     command: tpm2_policynv

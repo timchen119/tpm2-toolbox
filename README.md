@@ -19,9 +19,9 @@ $ sudo snap connect tpm2-toolbox:tpm
 
 # Notice
 
-Currently (2019-09-11) the latest stable release of tpm2-tools is 4.0,
-If you would like to get the latest master branch of tpm2-tools, please use the
-following commands:
+The latest stable channel of tpm2-toolbox includes tpm2-tools 4.0.x,
+The edge channel always includes the latest master branch of tpm2-tools, please use the
+following commands to install:
 
 ```bash
 $ sudo snap install tpm2-toolbox --edge
@@ -68,10 +68,10 @@ $ tpm2-toolbox.unseal --object-contex load.context --auth pcr:sha256:0=pcr0.bin
 ### With TPM2 H/W
 
 ```bash
-$ sudo tpm2-toolbox.pcrlist --sel-list sha256:0 --out-file pcr0.bin --tcti device:/dev/tpmrm0
+$ sudo tpm2-toolbox.pcrread sha256:0 --output pcr0.bin --tcti device:/dev/tpmrm0
 $ sudo tpm2-toolbox.createpolicy --policy-pcr --pcr-list sha256:0 --pcr pcr0.bin --policy policy.digest --tcti device:/dev/tpmrm0
 $ sudo tpm2-toolbox.createprimary --hierarchy o --hash-algorithm sha256 --key-algorithm rsa --key-context primary.context --tcti device:/dev/tpmrm0
-$ sudo tpm2-toolbox.create --hash-algorithm sha256 --public obj.pub --private obj.priv --parent-context primary.context --policy policy.digest --attributes 0x492 --sealing-input - <<< "MYSECRET" --tcti device:/dev/tpmrm0
+$ sudo tpm2-toolbox.create --hash-algorithm sha256 --public obj.pub --private obj.priv --parent-context primary.context --policy policy.digest --attributes 0x492 --sealing-input - <<< "MYROOTSECRET" --tcti device:/dev/tpmrm0
 $ sudo tpm2-toolbox.load --public obj.pub --private obj.priv --parent-context primary.context --name load.name --key-context load.context --tcti device:/dev/tpmrm0
 
 $ sudo tpm2-toolbox.unseal --object-contex load.context --auth pcr:sha256:0=pcr0.bin --tcti device:/dev/tpmrm0

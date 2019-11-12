@@ -225,6 +225,9 @@ apps:
   policysigned:
     command: bin/tpm2_policysigned
     plugs: [tpm, network, home]
+  policytemplate:
+    command: bin/tpm2_policytemplate
+    plugs: [tpm, network, home]
   policyticket:
     command: bin/tpm2_policyticket
     plugs: [tpm, network, home]
@@ -838,4 +841,5 @@ parts:
     organize:
       swtpm-start.sh: bin/swtpm-start.sh
       test-eapolicy.sh: bin/test-eapolicy.sh
+      alias-tpm2-tools.sh: bin/alias-tpm2-tools.sh
     after: [swtpm]

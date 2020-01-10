@@ -662,6 +662,7 @@ parts:
       - libgcrypt20-dev
       - doxygen
       - libltdl-dev
+      - libjson-c-dev
     stage-packages:
       - libgcrypt20
       - libssl1.1

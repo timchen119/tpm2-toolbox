@@ -776,6 +776,7 @@ parts:
     source-type: git
     configflags:
       - --disable-tpm-1.2
+      - CFLAGS="-lcrypto -g -O2"
     after:
       - tpm2-tools
 

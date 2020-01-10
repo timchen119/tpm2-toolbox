@@ -774,9 +774,10 @@ parts:
     plugin: autotools
     source: https://git.code.sf.net/p/ibmtpm20tss/tss
     source-type: git
+    build-environment:
+      - CFLAGS: "-lcrypto -g -O2"
     configflags:
       - --disable-tpm-1.2
-      - CFLAGS="-lcrypto -g -O2"
     after:
       - tpm2-tools
 

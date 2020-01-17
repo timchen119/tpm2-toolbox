@@ -50,7 +50,7 @@ $ sudo tpm2-toolbox.pcrread -T device:/dev/tpm0
 To manually setup the commands alias to start with "tpm2_", you can use the following command to setup snap alias:
 
 ```bash
-$ for binary in /snap/tpm2-toolbox/current/bin/tpm2_*; do command=$(basename $binary | cut -c 6-); sudo snap alias tpm2-toolbox.$(echo $command | sed 's/_/-/g') tpm2_$command; done
+$ /snap/tpm2-toolbox/current/bin/alias-tpm2-tools.sh
 ```
 
 ### Without TPM2 H/W

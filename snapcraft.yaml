@@ -84,6 +84,9 @@ apps:
   encryptdecrypt:
     command: bin/tpm2_encryptdecrypt
     plugs: [tpm, network, home]
+  eventlog:
+    command: bin/tpm2_eventlog
+    plugs: [tpm, network, home]
   evictcontrol:
     command: bin/tpm2_evictcontrol
     plugs: [tpm, network, home]
@@ -191,6 +194,9 @@ apps:
     plugs: [tpm, network, home]
   policycountertimer:
     command: bin/tpm2_policycountertimer
+    plugs: [tpm, network, home]
+  policycphash:
+    command: bin/tpm2_policycphash
     plugs: [tpm, network, home]
   policyduplicationselect:
     command: bin/tpm2_policyduplicationselect

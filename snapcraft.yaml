@@ -60,6 +60,9 @@ apps:
   clockrateadjust:
     command: bin/tpm2_clockrateadjust
     plugs: [tpm, network, home]
+  commit:
+    command: bin/tpm2_commit
+    plugs: [tpm, network, home]
   create:
     command: bin/tpm2_create
     plugs: [tpm, network, home]
@@ -81,6 +84,15 @@ apps:
   duplicate:
     command: bin/tpm2_duplicate
     plugs: [tpm, network, home]
+  ecdhkeygen:
+    command: bin/tpm2_ecdhkeygen
+    plugs: [tpm, network, home]
+  ecdhzgen:
+    command: bin/tpm2_ecdhzgen
+    plugs: [tpm, network, home]
+  ecephermal:
+    command: bin/tpm2_ecephermal
+    plugs: [tpm, network, home]
   encryptdecrypt:
     command: bin/tpm2_encryptdecrypt
     plugs: [tpm, network, home]
@@ -96,11 +108,20 @@ apps:
   getcap:
     command: bin/tpm2_getcap
     plugs: [tpm, network, home]
+  getcommandauditdigest:
+    command: bin/tpm2_getcommandauditdigest
+    plugs: [tpm, network, home]
+  geteccparameters:
+    command: bin/tpm2_geteccparameters
+    plugs: [tpm, network, home]
   getekcertificate:
     command: bin/tpm2_getekcertificate
     plugs: [tpm, network, home]
   getrandom:
     command: bin/tpm2_getrandom
+    plugs: [tpm, network, home]
+  getsessionauditdigest:
+    command: bin/tpm2_getsessionauditdigest
     plugs: [tpm, network, home]
   gettestresult:
     command: bin/tpm2_gettestresult
@@ -208,10 +229,10 @@ apps:
     command: bin/tpm2_policynamehash
     plugs: [tpm, network, home]
   policynv:
-    command: tpm2_policynv
+    command: bin/tpm2_policynv
     plugs: [tpm, network, home]
   policynvwritten:
-    command: tpm2_policynvwritten
+    command: bin/tpm2_policynvwritten
     plugs: [tpm, network, home]
   policyor:
     command: bin/tpm2_policyor
@@ -266,6 +287,9 @@ apps:
     plugs: [tpm, network, home]
   setclock:
     command: bin/tpm2_setclock
+    plugs: [tpm, network, home]
+  setcommandauditstatus:
+    command: bin/tpm2_setcommandauditstatus
     plugs: [tpm, network, home]
   setprimarypolicy:
     command: bin/tpm2_setprimarypolicy
@@ -638,6 +662,9 @@ apps:
     plugs: [tpm, network-bind, home]
   test-eapolicy:
     command: bin/test-eapolicy.sh
+    plugs: [tpm, network, home]
+  zgen2phase:
+    command: bin/tpm2_zgen2phase
     plugs: [tpm, network, home]
 
 parts:

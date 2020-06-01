@@ -19,7 +19,7 @@ $ sudo snap connect tpm2-toolbox:tpm
 
 # Notice
 
-The latest stable channel of tpm2-toolbox includes tpm2-tools 4.0.x,
+The latest stable channel of tpm2-toolbox includes tpm2-tools 4.2.x,
 The edge channel always includes the latest master branch of tpm2-tools, please use the
 following commands to install:
 

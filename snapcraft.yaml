@@ -735,6 +735,7 @@ parts:
       - lcov
       - pandoc
       - libcurl4-openssl-dev
+      - uuid-dev
     stage-packages:
       - libgnutls-openssl27
       - openssl

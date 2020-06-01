@@ -764,6 +764,7 @@ parts:
       - libsqlite3-0
       - libwind0-heimdal
       - libdb5.3
+      - libuuid1
     after:
       - tpm2-tss
       - tpm2-abrmd

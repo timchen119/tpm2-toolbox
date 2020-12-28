@@ -39,6 +39,9 @@ apps:
   certifycreation:
     command: bin/tpm2_certifycreation
     plugs: [tpm, network, home]
+  certifyX509certutil:
+    command: bin/certifyX509certutil
+    plugs: [tpm, network, home]
   changeauth:
     command: bin/tpm2_changeauth
     plugs: [tpm, network, home]

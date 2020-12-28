@@ -93,6 +93,9 @@ apps:
   ecdhzgen:
     command: bin/tpm2_ecdhzgen
     plugs: [tpm, network, home]
+  ecephermal:
+    command: bin/tpm2_ecephermal
+    plugs: [tpm, network, home]
   encryptdecrypt:
     command: bin/tpm2_encryptdecrypt
     plugs: [tpm, network, home]

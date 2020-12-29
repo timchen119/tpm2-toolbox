@@ -8,7 +8,7 @@ description: |
 
 confinement: strict
 grade: stable
-base: core18
+base: core20
 adopt-info: tpm2-tools
 
 slots:
@@ -23,642 +23,642 @@ apps:
     daemon: simple
     plugs: [tpm, network-bind]
   tpm2-abrmd:
-    command: sbin/tpm2-abrmd --allow-root --tcti=mssim
+    command: bin/tpm2-abrmd-start.sh
     daemon: simple
     plugs: [tpm, network-bind]
     slots: [tpm2-abrmd-dbus]
   swtpm:
-    command: bin/swtpm
+    command: usr/local/bin/swtpm
     plugs: [tpm, network-bind, home]
   activatecredential:
-    command: bin/tpm2_activatecredential
+    command: usr/bin/tpm2_activatecredential
     plugs: [tpm, network, home]
   certify:
-    command: bin/tpm2_certify
+    command: usr/bin/tpm2_certify
     plugs: [tpm, network, home]
   certifycreation:
-    command: bin/tpm2_certifycreation
+    command: usr/bin/tpm2_certifycreation
     plugs: [tpm, network, home]
   certifyX509certutil:
-    command: bin/certifyX509certutil
+    command: usr/bin/tpm2_certifyX509certutil
     plugs: [tpm, network, home]
   changeauth:
-    command: bin/tpm2_changeauth
+    command: usr/bin/tpm2_changeauth
     plugs: [tpm, network, home]
   changeeps:
-    command: bin/tpm2_changeeps
+    command: usr/bin/tpm2_changeeps
     plugs: [tpm, network, home]
   changepps:
-    command: bin/tpm2_changepps
+    command: usr/bin/tpm2_changepps
     plugs: [tpm, network, home]
   checkquote:
-    command: bin/tpm2_checkquote
+    command: usr/bin/tpm2_checkquote
     plugs: [tpm, network, home]
   clear:
-    command: bin/tpm2_clear
+    command: usr/bin/tpm2_clear
     plugs: [tpm, network, home]
   clearcontrol:
-    command: bin/tpm2_clearcontrol
+    command: usr/bin/tpm2_clearcontrol
     plugs: [tpm, network, home]
   clockrateadjust:
-    command: bin/tpm2_clockrateadjust
+    command: usr/bin/tpm2_clockrateadjust
     plugs: [tpm, network, home]
   commit:
-    command: bin/tpm2_commit
+    command: usr/bin/tpm2_commit
     plugs: [tpm, network, home]
   create:
-    command: bin/tpm2_create
+    command: usr/bin/tpm2_create
     plugs: [tpm, network, home]
   createak:
-    command: bin/tpm2_createak
+    command: usr/bin/tpm2_createak
     plugs: [tpm, network, home]
   createek:
-    command: bin/tpm2_createek
+    command: usr/bin/tpm2_createek
     plugs: [tpm, network, home]
   createpolicy:
-    command: bin/tpm2_createpolicy
+    command: usr/bin/tpm2_createpolicy
     plugs: [tpm, network, home]
   createprimary:
-    command: bin/tpm2_createprimary
+    command: usr/bin/tpm2_createprimary
     plugs: [tpm, network, home]
   dictionarylockout:
-    command: bin/tpm2_dictionarylockout
+    command: usr/bin/tpm2_dictionarylockout
     plugs: [tpm, network, home]
   duplicate:
-    command: bin/tpm2_duplicate
+    command: usr/bin/tpm2_duplicate
     plugs: [tpm, network, home]
   ecdhkeygen:
-    command: bin/tpm2_ecdhkeygen
+    command: usr/bin/tpm2_ecdhkeygen
     plugs: [tpm, network, home]
   ecdhzgen:
-    command: bin/tpm2_ecdhzgen
+    command: usr/bin/tpm2_ecdhzgen
     plugs: [tpm, network, home]
-  ecephermal:
-    command: bin/tpm2_ecephermal
+  ecephemeral:
+    command: usr/bin/tpm2_ecephemeral
     plugs: [tpm, network, home]
   encryptdecrypt:
-    command: bin/tpm2_encryptdecrypt
+    command: usr/bin/tpm2_encryptdecrypt
     plugs: [tpm, network, home]
   eventlog:
-    command: bin/tpm2_eventlog
+    command: usr/bin/tpm2_eventlog
     plugs: [tpm, network, home]
   evictcontrol:
-    command: bin/tpm2_evictcontrol
+    command: usr/bin/tpm2_evictcontrol
     plugs: [tpm, network, home]
   flushcontext:
-    command: bin/tpm2_flushcontext
+    command: usr/bin/tpm2_flushcontext
     plugs: [tpm, network, home]
   getcap:
-    command: bin/tpm2_getcap
+    command: usr/bin/tpm2_getcap
     plugs: [tpm, network, home]
   getcommandauditdigest:
-    command: bin/tpm2_getcommandauditdigest
+    command: usr/bin/tpm2_getcommandauditdigest
     plugs: [tpm, network, home]
   geteccparameters:
-    command: bin/tpm2_geteccparameters
+    command: usr/bin/tpm2_geteccparameters
     plugs: [tpm, network, home]
   getekcertificate:
-    command: bin/tpm2_getekcertificate
+    command: usr/bin/tpm2_getekcertificate
     plugs: [tpm, network, home]
   getrandom:
-    command: bin/tpm2_getrandom
+    command: usr/bin/tpm2_getrandom
     plugs: [tpm, network, home]
   getsessionauditdigest:
-    command: bin/tpm2_getsessionauditdigest
+    command: usr/bin/tpm2_getsessionauditdigest
     plugs: [tpm, network, home]
   gettestresult:
-    command: bin/tpm2_gettestresult
+    command: usr/bin/tpm2_gettestresult
     plugs: [tpm, network, home]
   gettime:
-    command: bin/tpm2_gettime
+    command: usr/bin/tpm2_gettime
     plugs: [tpm, network, home]
   hash:
-    command: bin/tpm2_hash
+    command: usr/bin/tpm2_hash
     plugs: [tpm, network, home]
   hierarchycontrol:
-    command: bin/tpm2_hierarchycontrol
+    command: usr/bin/tpm2_hierarchycontrol
     plugs: [tpm, network, home]
   hmac:
-    command: bin/tpm2_hmac
+    command: usr/bin/tpm2_hmac
     plugs: [tpm, network, home]
   incrementalselftest:
-    command: bin/tpm2_incrementalselftest
+    command: usr/bin/tpm2_incrementalselftest
     plugs: [tpm, network, home]
   import:
-    command: bin/tpm2_import
+    command: usr/bin/tpm2_import
     plugs: [tpm, network, home]
   load:
-    command: bin/tpm2_load
+    command: usr/bin/tpm2_load
     plugs: [tpm, network, home]
   loadexternal:
-    command: bin/tpm2_loadexternal
+    command: usr/bin/tpm2_loadexternal
     plugs: [tpm, network, home]
   makecredential:
-    command: bin/tpm2_makecredential
+    command: usr/bin/tpm2_makecredential
     plugs: [tpm, network, home]
   nvcertify:
-    command: bin/tpm2_nvcertify
+    command: usr/bin/tpm2_nvcertify
     plugs: [tpm, network, home]
   nvdefine:
-    command: bin/tpm2_nvdefine
+    command: usr/bin/tpm2_nvdefine
     plugs: [tpm, network, home]
   nvextend:
-    command: bin/tpm2_nvextend
+    command: usr/bin/tpm2_nvextend
     plugs: [tpm, network, home]
   nvincrement:
-    command: bin/tpm2_nvincrement
+    command: usr/bin/tpm2_nvincrement
     plugs: [tpm, network, home]
   nvreadpublic:
-    command: bin/tpm2_nvreadpublic
+    command: usr/bin/tpm2_nvreadpublic
     plugs: [tpm, network, home]
   nvread:
-    command: bin/tpm2_nvread
+    command: usr/bin/tpm2_nvread
     plugs: [tpm, network, home]
   nvreadlock:
-    command: bin/tpm2_nvreadlock
+    command: usr/bin/tpm2_nvreadlock
     plugs: [tpm, network, home]
   nvsetbits:
-    command: bin/tpm2_nvsetbits
+    command: usr/bin/tpm2_nvsetbits
     plugs: [tpm, network, home]
   nvundefine:
-    command: bin/tpm2_nvundefine
+    command: usr/bin/tpm2_nvundefine
     plugs: [tpm, network, home]
   nvwrite:
-    command: bin/tpm2_nvwrite
+    command: usr/bin/tpm2_nvwrite
     plugs: [tpm, network, home]
   nvwritelock:
-    command: bin/tpm2_nvwritelock
+    command: usr/bin/tpm2_nvwritelock
     plugs: [tpm, network, home]
   pcrallocate:
-    command: bin/tpm2_pcrallocate
+    command: usr/bin/tpm2_pcrallocate
     plugs: [tpm, network, home]
   pcrevent:
-    command: bin/tpm2_pcrevent
+    command: usr/bin/tpm2_pcrevent
     plugs: [tpm, network, home]
   pcrextend:
-    command: bin/tpm2_pcrextend
+    command: usr/bin/tpm2_pcrextend
     plugs: [tpm, network, home]
   pcrread:
-    command: bin/tpm2_pcrread
+    command: usr/bin/tpm2_pcrread
     plugs: [tpm, network, home]
   pcrreset:
-    command: bin/tpm2_pcrreset
+    command: usr/bin/tpm2_pcrreset
     plugs: [tpm, network, home]
   policyauthorize:
-    command: bin/tpm2_policyauthorize
+    command: usr/bin/tpm2_policyauthorize
     plugs: [tpm, network, home]
   policyauthorizenv:
-    command: bin/tpm2_policyauthorizenv
+    command: usr/bin/tpm2_policyauthorizenv
     plugs: [tpm, network, home]
   policyauthvalue:
-    command: bin/tpm2_policyauthvalue
+    command: usr/bin/tpm2_policyauthvalue
     plugs: [tpm, network, home]
   policycommandcode:
-    command: bin/tpm2_policycommandcode
+    command: usr/bin/tpm2_policycommandcode
     plugs: [tpm, network, home]
   policycountertimer:
-    command: bin/tpm2_policycountertimer
+    command: usr/bin/tpm2_policycountertimer
     plugs: [tpm, network, home]
   policycphash:
-    command: bin/tpm2_policycphash
+    command: usr/bin/tpm2_policycphash
     plugs: [tpm, network, home]
   policyduplicationselect:
-    command: bin/tpm2_policyduplicationselect
+    command: usr/bin/tpm2_policyduplicationselect
     plugs: [tpm, network, home]
   policylocality:
-    command: bin/tpm2_policylocality
+    command: usr/bin/tpm2_policylocality
     plugs: [tpm, network, home]
   policynamehash:
-    command: bin/tpm2_policynamehash
+    command: usr/bin/tpm2_policynamehash
     plugs: [tpm, network, home]
   policynv:
-    command: bin/tpm2_policynv
+    command: usr/bin/tpm2_policynv
     plugs: [tpm, network, home]
   policynvwritten:
-    command: bin/tpm2_policynvwritten
+    command: usr/bin/tpm2_policynvwritten
     plugs: [tpm, network, home]
   policyor:
-    command: bin/tpm2_policyor
+    command: usr/bin/tpm2_policyor
     plugs: [tpm, network, home]
   policypassword:
-    command: bin/tpm2_policypassword
+    command: usr/bin/tpm2_policypassword
     plugs: [tpm, network, home]
   policypcr:
-    command: bin/tpm2_policypcr
+    command: usr/bin/tpm2_policypcr
     plugs: [tpm, network, home]
   policyrestart:
-    command: bin/tpm2_policyrestart
+    command: usr/bin/tpm2_policyrestart
     plugs: [tpm, network, home]
   policysecret:
-    command: bin/tpm2_policysecret
+    command: usr/bin/tpm2_policysecret
     plugs: [tpm, network, home]
   policysigned:
-    command: bin/tpm2_policysigned
+    command: usr/bin/tpm2_policysigned
     plugs: [tpm, network, home]
   policytemplate:
-    command: bin/tpm2_policytemplate
+    command: usr/bin/tpm2_policytemplate
     plugs: [tpm, network, home]
   policyticket:
-    command: bin/tpm2_policyticket
+    command: usr/bin/tpm2_policyticket
     plugs: [tpm, network, home]
   print:
-    command: bin/tpm2_print
+    command: usr/bin/tpm2_print
     plugs: [tpm, network, home]
   quote:
-    command: bin/tpm2_quote
+    command: usr/bin/tpm2_quote
     plugs: [tpm, network, home]
   rc-decode:
-    command: bin/tpm2_rc_decode
+    command: usr/bin/tpm2_rc_decode
     plugs: [tpm, network, home]
   readclock:
-    command: bin/tpm2_readclock
+    command: usr/bin/tpm2_readclock
     plugs: [tpm, network, home]
   readpublic:
-    command: bin/tpm2_readpublic
+    command: usr/bin/tpm2_readpublic
     plugs: [tpm, network, home]
   rsadecrypt:
-    command: bin/tpm2_rsadecrypt
+    command: usr/bin/tpm2_rsadecrypt
     plugs: [tpm, network, home]
   rsaencrypt:
-    command: bin/tpm2_rsaencrypt
+    command: usr/bin/tpm2_rsaencrypt
     plugs: [tpm, network, home]
   selftest:
-    command: bin/tpm2_selftest
+    command: usr/bin/tpm2_selftest
     plugs: [tpm, network, home]
   send:
-    command: bin/tpm2_send
+    command: usr/bin/tpm2_send
     plugs: [tpm, network, home]
   setclock:
-    command: bin/tpm2_setclock
+    command: usr/bin/tpm2_setclock
     plugs: [tpm, network, home]
   setcommandauditstatus:
-    command: bin/tpm2_setcommandauditstatus
+    command: usr/bin/tpm2_setcommandauditstatus
     plugs: [tpm, network, home]
   setprimarypolicy:
-    command: bin/tpm2_setprimarypolicy
+    command: usr/bin/tpm2_setprimarypolicy
     plugs: [tpm, network, home]
   sign:
-    command: bin/tpm2_sign
+    command: usr/bin/tpm2_sign
     plugs: [tpm, network, home]
   startauthsession:
-    command: bin/tpm2_startauthsession
+    command: usr/bin/tpm2_startauthsession
     plugs: [tpm, network, home]
   startup:
-    command: bin/tpm2_startup
+    command: usr/bin/tpm2_startup
     plugs: [tpm, network, home]
   stirrandom:
-    command: bin/tpm2_stirrandom
+    command: usr/bin/tpm2_stirrandom
     plugs: [tpm, network, home]
   shutdown:
-    command: bin/tpm2_shutdown
+    command: usr/bin/tpm2_shutdown
     plugs: [tpm, network, home]
   testparms:
-    command: bin/tpm2_testparms
+    command: usr/bin/tpm2_testparms
     plugs: [tpm, network, home]
   unseal:
-    command: bin/tpm2_unseal
+    command: usr/bin/tpm2_unseal
     plugs: [tpm, network, home]
   verifysignature:
-    command: bin/tpm2_verifysignature
+    command: usr/bin/tpm2_verifysignature
     plugs: [tpm, network, home]
   tssactivatecredential:
-    command: bin/tssactivatecredential
+    command: usr/local/bin/tssactivatecredential
     plugs: [tpm, network, home]
   tsscertify:
-    command: bin/tsscertify
+    command: usr/local/bin/tsscertify
     plugs: [tpm, network, home]
   tsscertifycreation:
-    command: bin/tsscertifycreation
+    command: usr/local/bin/tsscertifycreation
     plugs: [tpm, network, home]
   tsschangeeps:
-    command: bin/tsschangeeps
+    command: usr/local/bin/tsschangeeps
     plugs: [tpm, network, home]
   tsschangepps:
-    command: bin/tsschangepps
+    command: usr/local/bin/tsschangepps
     plugs: [tpm, network, home]
   tssclear:
-    command: bin/tssclear
+    command: usr/local/bin/tssclear
     plugs: [tpm, network, home]
   tssclearcontrol:
-    command: bin/tssclearcontrol
+    command: usr/local/bin/tssclearcontrol
     plugs: [tpm, network, home]
   tssclockrateadjust:
-    command: bin/tssclockrateadjust
+    command: usr/local/bin/tssclockrateadjust
     plugs: [tpm, network, home]
   tssclockset:
-    command: bin/tssclockset
+    command: usr/local/bin/tssclockset
     plugs: [tpm, network, home]
   tsscommit:
-    command: bin/tsscommit
+    command: usr/local/bin/tsscommit
     plugs: [tpm, network, home]
   tsscontextload:
-    command: bin/tsscontextload
+    command: usr/local/bin/tsscontextload
     plugs: [tpm, network, home]
   tsscontextsave:
-    command: bin/tsscontextsave
+    command: usr/local/bin/tsscontextsave
     plugs: [tpm, network, home]
   tsscreate:
-    command: bin/tsscreate
+    command: usr/local/bin/tsscreate
     plugs: [tpm, network, home]
   tsscreateek:
-    command: bin/tsscreateek
+    command: usr/local/bin/tsscreateek
     plugs: [tpm, network, home]
   tsscreateekcert:
-    command: bin/tsscreateekcert
+    command: usr/local/bin/tsscreateekcert
     plugs: [tpm, network, home]
   tsscreateloaded:
-    command: bin/tsscreateloaded
+    command: usr/local/bin/tsscreateloaded
     plugs: [tpm, network, home]
   tsscreateprimary:
-    command: bin/tsscreateprimary
+    command: usr/local/bin/tsscreateprimary
     plugs: [tpm, network, home]
   tssdictionaryattacklockreset:
-    command: bin/tssdictionaryattacklockreset
+    command: usr/local/bin/tssdictionaryattacklockreset
     plugs: [tpm, network, home]
   tssdictionaryattackparameters:
-    command: bin/tssdictionaryattackparameters
+    command: usr/local/bin/tssdictionaryattackparameters
     plugs: [tpm, network, home]
   tssduplicate:
-    command: bin/tssduplicate
+    command: usr/local/bin/tssduplicate
     plugs: [tpm, network, home]
   tsseccparameters:
-    command: bin/tsseccparameters
+    command: usr/local/bin/tsseccparameters
     plugs: [tpm, network, home]
   tssecephemeral:
-    command: bin/tssecephemeral
+    command: usr/local/bin/tssecephemeral
     plugs: [tpm, network, home]
   tssencryptdecrypt:
-    command: bin/tssencryptdecrypt
+    command: usr/local/bin/tssencryptdecrypt
     plugs: [tpm, network, home]
   tsseventextend:
-    command: bin/tsseventextend
+    command: usr/local/bin/tsseventextend
     plugs: [tpm, network, home]
   tsseventsequencecomplete:
-    command: bin/tsseventsequencecomplete
+    command: usr/local/bin/tsseventsequencecomplete
     plugs: [tpm, network, home]
   tssevictcontrol:
-    command: bin/tssevictcontrol
+    command: usr/local/bin/tssevictcontrol
     plugs: [tpm, network, home]
   tssflushcontext:
-    command: bin/tssflushcontext
+    command: usr/local/bin/tssflushcontext
     plugs: [tpm, network, home]
   tssgetcapability:
-    command: bin/tssgetcapability
+    command: usr/local/bin/tssgetcapability
     plugs: [tpm, network, home]
   tssgetcommandauditdigest:
-    command: bin/tssgetcommandauditdigest
+    command: usr/local/bin/tssgetcommandauditdigest
     plugs: [tpm, network, home]
   tssgetrandom:
-    command: bin/tssgetrandom
+    command: usr/local/bin/tssgetrandom
     plugs: [tpm, network, home]
   tssgetsessionauditdigest:
-    command: bin/tssgetsessionauditdigest
+    command: usr/local/bin/tssgetsessionauditdigest
     plugs: [tpm, network, home]
   tssgettestresult:
-    command: bin/tssgettestresult
+    command: usr/local/bin/tssgettestresult
     plugs: [tpm, network, home]
   tssgettime:
-    command: bin/tssgettime
+    command: usr/local/bin/tssgettime
     plugs: [tpm, network, home]
   tsshash:
-    command: bin/tsshash
+    command: usr/local/bin/tsshash
     plugs: [tpm, network, home]
   tsshashsequencestart:
-    command: bin/tsshashsequencestart
+    command: usr/local/bin/tsshashsequencestart
     plugs: [tpm, network, home]
   tsshierarchychangeauth:
-    command: bin/tsshierarchychangeauth
+    command: usr/local/bin/tsshierarchychangeauth
     plugs: [tpm, network, home]
   tsshierarchycontrol:
-    command: bin/tsshierarchycontrol
+    command: usr/local/bin/tsshierarchycontrol
     plugs: [tpm, network, home]
   tsshmac:
-    command: bin/tsshmac
+    command: usr/local/bin/tsshmac
     plugs: [tpm, network, home]
   tsshmacstart:
-    command: bin/tsshmacstart
+    command: usr/local/bin/tsshmacstart
     plugs: [tpm, network, home]
   tssimaextend:
-    command: bin/tssimaextend
+    command: usr/local/bin/tssimaextend
     plugs: [tpm, network, home]
   tssimport:
-    command: bin/tssimport
+    command: usr/local/bin/tssimport
     plugs: [tpm, network, home]
   tssimportpem:
-    command: bin/tssimportpem
+    command: usr/local/bin/tssimportpem
     plugs: [tpm, network, home]
   tssload:
-    command: bin/tssload
+    command: usr/local/bin/tssload
     plugs: [tpm, network, home]
   tssloadexternal:
-    command: bin/tssloadexternal
+    command: usr/local/bin/tssloadexternal
     plugs: [tpm, network, home]
   tssmakecredential:
-    command: bin/tssmakecredential
+    command: usr/local/bin/tssmakecredential
     plugs: [tpm, network, home]
   tssntc2getconfig:
-    command: bin/tssntc2getconfig
+    command: usr/local/bin/tssntc2getconfig
     plugs: [tpm, network, home]
   tssntc2lockconfig:
-    command: bin/tssntc2lockconfig
+    command: usr/local/bin/tssntc2lockconfig
     plugs: [tpm, network, home]
   tssntc2preconfig:
-    command: bin/tssntc2preconfig
+    command: usr/local/bin/tssntc2preconfig
     plugs: [tpm, network, home]
   tssnvcertify:
-    command: bin/tssnvcertify
+    command: usr/local/bin/tssnvcertify
     plugs: [tpm, network, home]
   tssnvchangeauth:
-    command: bin/tssnvchangeauth
+    command: usr/local/bin/tssnvchangeauth
     plugs: [tpm, network, home]
   tssnvdefinespace:
-    command: bin/tssnvdefinespace
+    command: usr/local/bin/tssnvdefinespace
     plugs: [tpm, network, home]
   tssnvextend:
-    command: bin/tssnvextend
+    command: usr/local/bin/tssnvextend
     plugs: [tpm, network, home]
   tssnvglobalwritelock:
-    command: bin/tssnvglobalwritelock
+    command: usr/local/bin/tssnvglobalwritelock
     plugs: [tpm, network, home]
   tssnvincrement:
-    command: bin/tssnvincrement
+    command: usr/local/bin/tssnvincrement
     plugs: [tpm, network, home]
   tssnvread:
-    command: bin/tssnvread
+    command: usr/local/bin/tssnvread
     plugs: [tpm, network, home]
   tssnvreadlock:
-    command: bin/tssnvreadlock
+    command: usr/local/bin/tssnvreadlock
     plugs: [tpm, network, home]
   tssnvreadpublic:
-    command: bin/tssnvreadpublic
+    command: usr/local/bin/tssnvreadpublic
     plugs: [tpm, network, home]
   tssnvsetbits:
-    command: bin/tssnvsetbits
+    command: usr/local/bin/tssnvsetbits
     plugs: [tpm, network, home]
   tssnvundefinespace:
-    command: bin/tssnvundefinespace
+    command: usr/local/bin/tssnvundefinespace
     plugs: [tpm, network, home]
   tssnvundefinespacespecial:
-    command: bin/tssnvundefinespacespecial
+    command: usr/local/bin/tssnvundefinespacespecial
     plugs: [tpm, network, home]
   tssnvwrite:
-    command: bin/tssnvwrite
+    command: usr/local/bin/tssnvwrite
     plugs: [tpm, network, home]
   tssnvwritelock:
-    command: bin/tssnvwritelock
+    command: usr/local/bin/tssnvwritelock
     plugs: [tpm, network, home]
   tssobjectchangeauth:
-    command: bin/tssobjectchangeauth
+    command: usr/local/bin/tssobjectchangeauth
     plugs: [tpm, network, home]
   tsspcrallocate:
-    command: bin/tsspcrallocate
+    command: usr/local/bin/tsspcrallocate
     plugs: [tpm, network, home]
   tsspcrevent:
-    command: bin/tsspcrevent
+    command: usr/local/bin/tsspcrevent
     plugs: [tpm, network, home]
   tsspcrextend:
-    command: bin/tsspcrextend
+    command: usr/local/bin/tsspcrextend
     plugs: [tpm, network, home]
   tsspcrread:
-    command: bin/tsspcrread
+    command: usr/local/bin/tsspcrread
     plugs: [tpm, network, home]
   tsspcrreset:
-    command: bin/tsspcrreset
+    command: usr/local/bin/tsspcrreset
     plugs: [tpm, network, home]
   tsspolicyauthorize:
-    command: bin/tsspolicyauthorize
+    command: usr/local/bin/tsspolicyauthorize
     plugs: [tpm, network, home]
   tsspolicyauthorizenv:
-    command: bin/tsspolicyauthorizenv
+    command: usr/local/bin/tsspolicyauthorizenv
     plugs: [tpm, network, home]
   tsspolicyauthvalue:
-    command: bin/tsspolicyauthvalue
+    command: usr/local/bin/tsspolicyauthvalue
     plugs: [tpm, network, home]
   tsspolicycommandcode:
-    command: bin/tsspolicycommandcode
+    command: usr/local/bin/tsspolicycommandcode
     plugs: [tpm, network, home]
   tsspolicycountertimer:
-    command: bin/tsspolicycountertimer
+    command: usr/local/bin/tsspolicycountertimer
     plugs: [tpm, network, home]
   tsspolicycphash:
-    command: bin/tsspolicycphash
+    command: usr/local/bin/tsspolicycphash
     plugs: [tpm, network, home]
   tsspolicyduplicationselect:
-    command: bin/tsspolicyduplicationselect
+    command: usr/local/bin/tsspolicyduplicationselect
     plugs: [tpm, network, home]
   tsspolicygetdigest:
-    command: bin/tsspolicygetdigest
+    command: usr/local/bin/tsspolicygetdigest
     plugs: [tpm, network, home]
   tsspolicymaker:
-    command: bin/tsspolicymaker
+    command: usr/local/bin/tsspolicymaker
     plugs: [tpm, network, home]
   tsspolicymakerpcr:
-    command: bin/tsspolicymakerpcr
+    command: usr/local/bin/tsspolicymakerpcr
     plugs: [tpm, network, home]
   tsspolicynamehash:
-    command: bin/tsspolicynamehash
+    command: usr/local/bin/tsspolicynamehash
     plugs: [tpm, network, home]
   tsspolicynv:
-    command: bin/tsspolicynv
+    command: usr/local/bin/tsspolicynv
     plugs: [tpm, network, home]
   tsspolicynvwritten:
-    command: bin/tsspolicynvwritten
+    command: usr/local/bin/tsspolicynvwritten
     plugs: [tpm, network, home]
   tsspolicyor:
-    command: bin/tsspolicyor
+    command: usr/local/bin/tsspolicyor
     plugs: [tpm, network, home]
   tsspolicypassword:
-    command: bin/tsspolicypassword
+    command: usr/local/bin/tsspolicypassword
     plugs: [tpm, network, home]
   tsspolicypcr:
-    command: bin/tsspolicypcr
+    command: usr/local/bin/tsspolicypcr
     plugs: [tpm, network, home]
   tsspolicyrestart:
-    command: bin/tsspolicyrestart
+    command: usr/local/bin/tsspolicyrestart
     plugs: [tpm, network, home]
   tsspolicysecret:
-    command: bin/tsspolicysecret
+    command: usr/local/bin/tsspolicysecret
     plugs: [tpm, network, home]
   tsspolicysigned:
-    command: bin/tsspolicysigned
+    command: usr/local/bin/tsspolicysigned
     plugs: [tpm, network, home]
   tsspolicytemplate:
-    command: bin/tsspolicytemplate
+    command: usr/local/bin/tsspolicytemplate
     plugs: [tpm, network, home]
   tsspolicyticket:
-    command: bin/tsspolicyticket
+    command: usr/local/bin/tsspolicyticket
     plugs: [tpm, network, home]
   tsspowerup:
-    command: bin/tsspowerup
+    command: usr/local/bin/tsspowerup
     plugs: [tpm, network, home]
   tssquote:
-    command: bin/tssquote
+    command: usr/local/bin/tssquote
     plugs: [tpm, network, home]
   tssreadclock:
-    command: bin/tssreadclock
+    command: usr/local/bin/tssreadclock
     plugs: [tpm, network, home]
   tssreadpublic:
-    command: bin/tssreadpublic
+    command: usr/local/bin/tssreadpublic
     plugs: [tpm, network, home]
   tssreturncode:
-    command: bin/tssreturncode
+    command: usr/local/bin/tssreturncode
     plugs: [tpm, network, home]
   tssrewrap:
-    command: bin/tssrewrap
+    command: usr/local/bin/tssrewrap
     plugs: [tpm, network, home]
   tssrsadecrypt:
-    command: bin/tssrsadecrypt
+    command: usr/local/bin/tssrsadecrypt
     plugs: [tpm, network, home]
   tssrsaencrypt:
-    command: bin/tssrsaencrypt
+    command: usr/local/bin/tssrsaencrypt
     plugs: [tpm, network, home]
   tsssequencecomplete:
-    command: bin/tsssequencecomplete
+    command: usr/local/bin/tsssequencecomplete
     plugs: [tpm, network, home]
   tsssequenceupdate:
-    command: bin/tsssequenceupdate
+    command: usr/local/bin/tsssequenceupdate
     plugs: [tpm, network, home]
   tsssetprimarypolicy:
-    command: bin/tsssetprimarypolicy
+    command: usr/local/bin/tsssetprimarypolicy
     plugs: [tpm, network, home]
   tssshutdown:
-    command: bin/tssshutdown
+    command: usr/local/bin/tssshutdown
     plugs: [tpm, network, home]
   tsssign:
-    command: bin/tsssign
+    command: usr/local/bin/tsssign
     plugs: [tpm, network, home]
   tsssignapp:
-    command: bin/tsssignapp
+    command: usr/local/bin/tsssignapp
     plugs: [tpm, network, home]
   tssstartauthsession:
-    command: bin/tssstartauthsession
+    command: usr/local/bin/tssstartauthsession
     plugs: [tpm, network, home]
   tssstartup:
-    command: bin/tssstartup
+    command: usr/local/bin/tssstartup
     plugs: [tpm, network, home]
   tssstirrandom:
-    command: bin/tssstirrandom
+    command: usr/local/bin/tssstirrandom
     plugs: [tpm, network, home]
   tsstimepacket:
-    command: bin/tsstimepacket
+    command: usr/local/bin/tsstimepacket
     plugs: [tpm, network, home]
   tsstpm2pem:
-    command: bin/tsstpm2pem
+    command: usr/local/bin/tsstpm2pem
     plugs: [tpm, network, home]
   tsstpmpublic2eccpoint:
-    command: bin/tsstpmpublic2eccpoint
+    command: usr/local/bin/tsstpmpublic2eccpoint
     plugs: [tpm, network, home]
   tssunseal:
-    command: bin/tssunseal
+    command: usr/local/bin/tssunseal
     plugs: [tpm, network, home]
   tssverifysignature:
-    command: bin/tssverifysignature
+    command: usr/local/bin/tssverifysignature
     plugs: [tpm, network, home]
   tsswriteapp:
-    command: bin/tsswriteapp
+    command: usr/local/bin/tsswriteapp
     plugs: [tpm, network, home]
   tsszgen2phase:
-    command: bin/tsszgen2phase
+    command: usr/local/bin/tsszgen2phase
     plugs: [tpm, network, home]
   swtpm-start:
     command: bin/swtpm-start.sh
@@ -667,7 +667,7 @@ apps:
     command: bin/test-eapolicy.sh
     plugs: [tpm, network, home]
   zgen2phase:
-    command: bin/tpm2_zgen2phase
+    command: usr/bin/tpm2_zgen2phase
     plugs: [tpm, network, home]
 
 parts:
@@ -731,7 +731,7 @@ parts:
     source: https://github.com/tpm2-software/tpm2-abrmd.git
     source-type: git
     #source-tag: 2.0.3
-    configflags:
+    autotools-configure-parameters:
       - --enable-unit
       - --with-dbuspolicydir=/etc/dbus-1/system.d
     stage-packages:
@@ -768,7 +768,7 @@ parts:
     source: https://github.com/tpm2-software/tpm2-tools.git
     source-type: git
     #source-tag: 3.1.3
-    configflags:
+    autotools-configure-parameters:
       - --prefix=$SNAPCRAFT_PART_INSTALL/
       - bashcompdir=SNAPCRAFT_PART_INSTALL/usr/share/bash-completion/completions/
       # - --enable-unit
@@ -776,7 +776,8 @@ parts:
       - pkg-config
       - libcmocka-dev
       - libtool
-      - python-pretty-yaml
+      - python3-pretty-yaml
+      #- python-pretty-yaml #18.04
       #- python-yaml #16.04
       - lcov
       - pandoc
@@ -819,7 +820,9 @@ parts:
       snapcraftctl pull
       snapcraftctl set-version 1.0-tpm2-tools+git-$(git show --format="%h" --no-patch)
     override-build: |
-      snapcraftctl build
+      ACLOCAL_PATH="/usr/share/gnulib/m4" ./bootstrap
+       ./configure --prefix=$SNAPCRAFT_PART_INSTALL/usr/
+      #snapcraftctl build
       # Run all tests shipped by default
       make check -j$(nproc)
       make install
@@ -830,7 +833,7 @@ parts:
     source-type: git
     build-environment:
       - CFLAGS: "-lcrypto -g -O2"
-    configflags:
+    autotools-configure-parameters:
       - --disable-tpm-1.2
     after:
       - tpm2-tools
@@ -851,7 +854,7 @@ parts:
     plugin: autotools
     source: https://github.com/stefanberger/libtpms.git
     source-type: git
-    configflags:
+    autotools-configure-parameters:
       - --with-openssl
       - --with-tpm2
     build-packages:
@@ -871,7 +874,7 @@ parts:
     plugin: autotools
     source: https://github.com/stefanberger/swtpm.git
     source-type: git
-    configflags:
+    autotools-configure-parameters:
       - --with-openssl
     stage-packages:
       - libfuse2
@@ -901,4 +904,5 @@ parts:
       swtpm-start.sh: bin/swtpm-start.sh
       test-eapolicy.sh: bin/test-eapolicy.sh
       alias-tpm2-tools.sh: bin/alias-tpm2-tools.sh
+      tpm2-abrmd-start.sh: bin/tpm2-abrmd-start.sh
     after: [swtpm]

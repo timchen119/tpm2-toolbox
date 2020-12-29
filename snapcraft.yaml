@@ -895,7 +895,7 @@ parts:
     after:
       - libtpms
     organize:
-      lib/swtpm/*: lib/
+      usr/local/lib/swtpm/*: lib/
 
   example-scripts:
     plugin: dump

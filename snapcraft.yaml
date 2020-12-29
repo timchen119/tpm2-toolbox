@@ -896,6 +896,7 @@ parts:
       - libtpms
     organize:
       usr/local/lib/swtpm/*: lib/
+      usr/local/lib/*: lib/
 
   example-scripts:
     plugin: dump

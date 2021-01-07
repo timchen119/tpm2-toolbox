@@ -869,6 +869,8 @@ parts:
       - net-tools
     after:
       - ibmswtpm2
+    organize:
+      usr/local/lib/*: usr/lib/
 
   swtpm:
     plugin: autotools
@@ -895,8 +897,7 @@ parts:
     after:
       - libtpms
     organize:
-      usr/local/lib/swtpm/*: lib/
-      usr/local/lib/*: lib/
+      usr/local/lib/swtpm/*: usr/lib/
 
   example-scripts:
     plugin: dump

@@ -840,7 +840,7 @@ parts:
 
   ibmswtpm2:
     plugin: make
-    source: https://downloads.sourceforge.net/project/ibmswtpm2/ibmtpm1332.tar.gz
+    source: https://downloads.sourceforge.net/project/ibmswtpm2/ibmtpm1637.tar.gz
     source-type: tar
     after:
       - ibmtpm20tss

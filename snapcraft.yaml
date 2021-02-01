@@ -288,6 +288,9 @@ apps:
   send:
     command: usr/bin/tpm2_send
     plugs: [tpm, network, home]
+  sessionconfig:
+    command: usr/bin/tpm2_sessionconfig
+    plugs: [tpm, network, home]
   setclock:
     command: usr/bin/tpm2_setclock
     plugs: [tpm, network, home]

@@ -56,6 +56,7 @@ $ /snap/tpm2-toolbox/current/bin/alias-tpm2-tools.sh
 ### Without TPM2 H/W
 
 ```bash
+$ tpm2-toolbox.startup -c
 $ tpm2-toolbox.pcrread sha256:0 --output pcr0.bin
 $ tpm2-toolbox.createpolicy --policy-pcr --pcr-list sha256:0 --pcr pcr0.bin --policy policy.digest
 $ tpm2-toolbox.createprimary --hierarchy o --hash-algorithm sha256 --key-algorithm rsa --key-context primary.context

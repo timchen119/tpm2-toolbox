@@ -773,10 +773,10 @@ parts:
     source: https://github.com/tpm2-software/tpm2-tools.git
     source-type: git
     #source-tag: 3.1.3
-    autotools-configure-parameters:
-      - --prefix=$SNAPCRAFT_PART_INSTALL/usr
-      - bashcompdir=SNAPCRAFT_PART_INSTALL/usr/share/bash-completion/completions/
-      # - --enable-unit
+    #autotools-configure-parameters:
+    #  - --prefix=$SNAPCRAFT_PART_INSTALL/usr/
+    #  - bashcompdir=SNAPCRAFT_PART_INSTALL/usr/share/bash-completion/completions/
+    #  - --enable-unit
     build-packages:
       - pkg-config
       - libcmocka-dev
@@ -826,7 +826,7 @@ parts:
       snapcraftctl set-version 1.0-tpm2-tools+git-$(git show --format="%h" --no-patch)
     override-build: |
       ACLOCAL_PATH="/usr/share/gnulib/m4" ./bootstrap
-      # ./configure --prefix=$SNAPCRAFT_PART_INSTALL/usr/
+      ./configure --prefix=$SNAPCRAFT_PART_INSTALL/usr/
       #snapcraftctl build
       # Run all tests shipped by default
       make check -j$(nproc)

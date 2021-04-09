@@ -25,11 +25,12 @@ following commands to install:
 
 ```bash
 $ sudo snap install tpm2-toolbox --edge
+$ sudo snap connect tpm2-toolbox:tpm
 ```
 
 ## Example usage
 
-Use tpm2_clear to clear the TPM:
+Use tpm2_clear to clear the H/W TPM:
 ```bash
 $ sudo tpm2-toolbox.clear -T device:/dev/tpmrm0
 ```
@@ -44,6 +45,11 @@ $ sudo tpm2-toolbox.pcrread -T device:/dev/tpmrm0
 For kernel older than 4.11:
 ```bash
 $ sudo tpm2-toolbox.pcrread -T device:/dev/tpm0
+```
+
+For people without TPM2 Hardware, the simulator tpm_server and abrmd are started by default, commands like "tpm2-toolbox.pcrread" should just work.
+```bash
+$ tpm2-toolbox.pcrread
 ```
 
 ### Tips

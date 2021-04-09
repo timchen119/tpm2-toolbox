@@ -685,16 +685,14 @@ parts:
     plugin: make
     source: https://github.com/tpm2-software/tpm2-tss.git
     source-type: git
-    #source-tag: 2.0.1
     build-packages:
       - autoconf
       - autoconf-archive
+      - acl
       - libtool
       - gcc-7
       - g++-7
       - gnulib
-      #- gcc #16.04
-      #- g++ #16.04
       - libc6-dev
       - liburiparser-dev
       - libssl-dev
@@ -702,10 +700,10 @@ parts:
       - doxygen
       - libltdl-dev
       - libjson-c-dev
+      - uthash-dev
     stage-packages:
       - libgcrypt20
       - libssl1.1
-      #- libssl1.0.0 #16.04
       - libgpg-error0
       - libasn1-8-heimdal
       - libcurl4
@@ -733,7 +731,6 @@ parts:
     plugin: autotools
     source: https://github.com/tpm2-software/tpm2-abrmd.git
     source-type: git
-    #source-tag: 2.0.3
     autotools-configure-parameters:
       - --enable-unit
       - --with-dbuspolicydir=/etc/dbus-1/system.d
@@ -782,8 +779,6 @@ parts:
       - libcmocka-dev
       - libtool
       - python3-pretty-yaml
-      #- python-pretty-yaml #18.04
-      #- python-yaml #16.04
       - lcov
       - pandoc
       - libcurl4-openssl-dev
@@ -792,12 +787,10 @@ parts:
       - libgnutls-openssl27
       - openssl
       - libcom-err2
-      #- libcomerr2 #16.04
       - libkeyutils1
       - zlib1g
       - libasn1-8-heimdal
       - libcurl4
-      #- libcurl3 #16.04
       - libgssapi-krb5-2
       - libhcrypto4-heimdal
       - libheimbase1-heimdal
@@ -810,7 +803,6 @@ parts:
       - libldap-2.4-2
       - libnghttp2-14
       - libpsl5
-      #- libpsl0 #16.04
       - libroken18-heimdal
       - librtmp1
       - libsasl2-2

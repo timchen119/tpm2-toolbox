@@ -729,6 +729,8 @@ parts:
       ./configure --enable-unit --prefix=$SNAPCRAFT_PART_INSTALL/usr/
       make check -j$(nproc)
       make install
+      chmod g-s $SNAPCRAFT_PART_INSTALL/usr/var/run/tpm2-tss/eventlog
+      chmod g-s $SNAPCRAFT_PART_INSTALL/usr/var/lib/tpm2-tss/system/keystore #https://github.com/tpm2-software/tpm2-tss/commit/811e451c9
 
   tpm2-abrmd:
     plugin: autotools

@@ -11,6 +11,9 @@ grade: stable
 base: core20
 adopt-info: tpm2-tools
 
+architectures:
+  - build-on: [amd64,arm64,ppc64el,s390x] #only built 64bit
+
 slots:
   tpm2-abrmd-dbus: # name that is used with 'snap connect' on slots side
     interface: dbus

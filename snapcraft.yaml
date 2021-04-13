@@ -12,7 +12,19 @@ base: core20
 adopt-info: tpm2-tools
 
 architectures:
-  - build-on: [amd64,arm64,ppc64el,s390x] #only built 64bit
+  #only build 64bit binaries
+  - build-on: amd64
+    run-on: amd64
+
+  - build-on: arm64
+    run-on: arm64
+
+  - build-on: ppc64el
+    run-on: ppc64el
+
+  - build-on: s390x
+    run-on: s390x
+    build-error: ignore
 
 slots:
   tpm2-abrmd-dbus: # name that is used with 'snap connect' on slots side

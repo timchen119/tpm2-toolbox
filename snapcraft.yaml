@@ -24,7 +24,6 @@ architectures:
 
   - build-on: s390x
     run-on: s390x
-    build-error: ignore
 
 slots:
   tpm2-abrmd-dbus: # name that is used with 'snap connect' on slots side

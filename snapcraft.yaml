@@ -741,7 +741,7 @@ parts:
     override-build: |
       ACLOCAL_PATH="/usr/share/gnulib/m4" ./bootstrap #https://github.com/tpm2-software/tpm2-tss/commit/d1106347ef2f8e7296f1bd6af7aa6e046f6a5a38
       ./configure --enable-unit --prefix=$SNAPCRAFT_PART_INSTALL/usr/
-      make check -j$(nproc)
+      make check -j$(nproc) || cat ./test-suite.log
       make install
       chmod g-s $SNAPCRAFT_PART_INSTALL/usr/var/run/tpm2-tss/eventlog
       chmod g-s $SNAPCRAFT_PART_INSTALL/usr/var/lib/tpm2-tss/system/keystore #https://github.com/tpm2-software/tpm2-tss/commit/811e451c9

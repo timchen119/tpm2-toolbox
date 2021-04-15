@@ -134,6 +134,9 @@ apps:
   getekcertificate:
     command: usr/bin/tpm2_getekcertificate
     plugs: [tpm, network, home]
+  getpolicydigest:
+    command: usr/bin/tpm2_getpolicydigest
+    plugs: [tpm, network, home]
   getrandom:
     command: usr/bin/tpm2_getrandom
     plugs: [tpm, network, home]
